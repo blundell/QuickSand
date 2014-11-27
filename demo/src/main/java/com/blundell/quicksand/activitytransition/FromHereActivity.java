@@ -1,6 +1,7 @@
 package com.blundell.quicksand.activitytransition;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Explode;
@@ -23,7 +24,8 @@ public class FromHereActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ToHereActivity.class);
-                startActivity(intent);
+                Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(FromHereActivity.this).toBundle();
+                startActivity(intent, bundle);
             }
         });
     }

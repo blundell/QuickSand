@@ -12,6 +12,7 @@ public class ToHereActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setAllowEnterTransitionOverlap(true);
         Transition transition = new Explode();
         Quicksand.manage(R.id.car_transition, transition);
         getWindow().setEnterTransition(transition);

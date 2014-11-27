@@ -23,7 +23,6 @@ public class Quicksand {
     }
 
     public static void manage(final int key, Transition transition) {   // TODO get out of static world
-        Log.d("TAG", "This transition with key " + key + " has been seen 0 times");
 
         final TransitionCountPreferences preferences = TransitionCountPreferences.newInstance();
 
@@ -31,7 +30,9 @@ public class Quicksand {
 
         long duration = transition.getDuration();
 
-        if (preferences.getCount(key) > 4) {
+        int count = preferences.getCount(key);
+        Log.d("TAG", "This transition with key " + key + " has been seen " + count + "an times");
+        if (count > 4) {
             Log.d("TAG", "Transition seen four times, speeding up");
             duration = 0;
         }
