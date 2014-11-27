@@ -17,7 +17,7 @@ public class TransitionCountPreferences {
     }
 
     public static TransitionCountPreferences newInstance() {
-        Context context = Quicksand.globalContext;     // TODO coupling
+        Context context = Quicksand.globalContext;     // TODO coupling between TCprefs & quicksand
         SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
         return new TransitionCountPreferences(sharedPreferences);
     }
@@ -27,7 +27,8 @@ public class TransitionCountPreferences {
     }
 
     public void incrementCount(int key) {
-        sharedPreferences.edit().putInt(getCountKey(key), 0).apply();
+        int currentCount = getCount(key);
+        sharedPreferences.edit().putInt(getCountKey(key), ++currentCount).apply();
     }
 
     private String getCountKey(int key) {

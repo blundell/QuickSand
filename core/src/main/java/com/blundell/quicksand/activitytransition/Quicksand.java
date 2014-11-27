@@ -31,7 +31,7 @@ public class Quicksand {
         long duration = transition.getDuration();
 
         int count = preferences.getCount(key);
-        Log.d("TAG", "This transition with key " + key + " has been seen " + count + "an times");
+        Log.d("TAG", "This transition with key " + key + " has been seen " + count + " times");
         if (count > 4) {
             Log.d("TAG", "Transition seen four times, speeding up");
             duration = 0;
@@ -43,14 +43,17 @@ public class Quicksand {
             @Override
             public void onTransitionStart(Transition transition) {
                 Log.d("TAG", "Transition started");
+                Log.d("TAG", "Duration is " + transition.getDuration());
             }
 
             @Override
             public void onTransitionEnd(Transition transition) {
                 Log.d("TAG", "Transition ended");
-                Log.d("TAG", "Recorded another transition viewing");
+                Log.d("TAG", "Duration was " + transition.getDuration());
 
+                Log.d("TAG", "Recorded another transition viewing");
                 preferences.incrementCount(key);
+                Log.d("TAG", "Count is now : " + preferences.getCount(key));
             }
 
             @Override
