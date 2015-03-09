@@ -1,11 +1,11 @@
-package com.blundell.quicksand.activitytransition;
+package com.blundell.quicksand;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.util.Locale;
 
-public class TransitionCountPreferences {
+class TransitionCountPreferences {
 
     private static final String NAME = "TransitionCountPreferences";
     private static final String KEY_COUNT = "TransitionCount%s";
@@ -16,22 +16,21 @@ public class TransitionCountPreferences {
         this.sharedPreferences = sharedPreferences;
     }
 
-    public static TransitionCountPreferences newInstance() {
-        Context context = Quicksand.globalContext;     // TODO coupling between TCprefs & quicksand
+    public static TransitionCountPreferences newInstance(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
         return new TransitionCountPreferences(sharedPreferences);
     }
 
-    public int getCount(int key) {  // a getter? hmm
-        return sharedPreferences.getInt(getCountKey(key), 0);
+    public long getCount(String key) {  // a getter? hmm
+        return sharedPreferences.getLong(getCountKey(key), 0L);
     }
 
-    public void incrementCount(int key) {
-        int currentCount = getCount(key);
-        sharedPreferences.edit().putInt(getCountKey(key), ++currentCount).apply();
+    public void incrementCount(String key) {
+        long currentCount = getCount(key);
+        sharedPreferences.edit().putLong(getCountKey(key), ++currentCount).apply();
     }
 
-    private String getCountKey(int key) {
+    private String getCountKey(String key) {
         return String.format(Locale.UK, KEY_COUNT, key);
     }
 }
