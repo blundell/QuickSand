@@ -13,7 +13,7 @@
 
   <fragment
     android:id="@+id/navigation_drawer"
-    android:name="com.blundell.quicksand.NavigationDrawerFragment"
+    android:name="com.blundell.quicksand.demo.NavigationDrawerFragment"
     android:layout_width="@dimen/navigation_drawer_width"
     android:layout_height="match_parent"
     android:layout_gravity="start"

@@ -26,7 +26,8 @@ public class Quicksand {
     public static void createSandTrap(Context context) {
         Context applicationContext = context.getApplicationContext();
         TransitionCounter counter = TransitionCounter.newInstance(applicationContext);
-        transitionManipulator = new TransitionTracker(counter);
+        DurationCalculator durationCalculator = new DurationCalculator();
+        transitionManipulator = new TransitionTracker(counter, durationCalculator);
     }
 
     /**
