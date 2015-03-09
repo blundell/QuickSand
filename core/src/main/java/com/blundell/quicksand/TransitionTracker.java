@@ -1,16 +1,12 @@
 package com.blundell.quicksand;
 
-import android.animation.Animator;
 import android.os.CountDownTimer;
 import android.transition.Transition;
 
 import com.blundell.quicksand.viscosity.NoChangeViscosityCommand;
 import com.novoda.notils.logger.simple.Log;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 class TransitionTracker {
@@ -19,10 +15,10 @@ class TransitionTracker {
 
     // Future enhancement: Use the Interpolator interface and classes to degrade properties
 
-    private TransitionCountPreferences preferences;
+    private TransitionCounter transitionCounter;
 
-    TransitionTracker(TransitionCountPreferences transitionCountPreferences) {
-        this.preferences = transitionCountPreferences;
+    TransitionTracker(TransitionCounter transitionCountPreferences) {
+        this.transitionCounter = transitionCountPreferences;
         Log.setShowLogs(true);
     }
 
@@ -36,11 +32,11 @@ class TransitionTracker {
     //  could be named algorithms like "expontential back off"
 
     void manipulate(final String key, Transition transition) {
-        transition.addListener(new Transition.TransitionListener() {
+        transition.addListener(new AccessibleTransitionListener() {
             @Override
-            public void onTransitionStart(Transition transition) {
-                long timesAnimationViewed = preferences.getCount(key);
-                long transitionDuration = getDuration(transition, timesAnimationViewed);
+            protected void onTransitionStart(AccessibleTransition transition) {
+                long timesAnimationViewed = transitionCounter.getCount(key);
+                long transitionDuration = calculateNewDuration(transition, timesAnimationViewed);
                 Log.d("----");
                 Log.d("Transition started " + key);
                 Log.d("Duration will be " + transitionDuration);
@@ -54,30 +50,15 @@ class TransitionTracker {
             public void onTransitionEnd(Transition transition) {
                 Log.d("----");
                 Log.d("Transition ended " + key);
-                Log.d("Animation viewed : " + preferences.getCount(key) + " times");
+                Log.d("Animation viewed : " + transitionCounter.getCount(key) + " times");
                 Log.d("Duration was " + transition.getDuration());
                 Log.d("----");
-            }
-
-            @Override
-            public void onTransitionCancel(Transition transition) {
-                // not-used
-            }
-
-            @Override
-            public void onTransitionPause(Transition transition) {
-                // not-used
-            }
-
-            @Override
-            public void onTransitionResume(Transition transition) {
-                // not-used
             }
         });
     }
 
     /**
-     * TODO it could be useful to know if this animation is part of a set elsewhere - split this method into two
+     * TODO it could be useful to know if this animation is part of a set of anims elsewhere - split this method into two
      * <p/>
      * When an animation starts we increment the number of views
      * If a previous animation is running with the same key we do not increment the number of views
@@ -102,7 +83,7 @@ class TransitionTracker {
 
         CountDownTimer parallelAnimationCountdown = monitoredAnimations.get(key);
         if (parallelAnimationCountdown == null) {
-            preferences.incrementCount(key);
+            transitionCounter.incrementCount(key);
         } else {
             parallelAnimationCountdown.cancel();
         }
@@ -113,9 +94,8 @@ class TransitionTracker {
      * This is where we change the animation duration & is where we should implement user choice for
      * the algorithm used to decrement animation time
      */
-    private static long getDuration(Transition transition, long timesAnimationViewed) {
-        List<Animator> animators = getAnimators(transition);
-        long currentDuration = animators.get(0).getDuration();
+    private static long calculateNewDuration(AccessibleTransition transition, long timesAnimationViewed) {
+        long currentDuration = transition.getDuration();
         if (currentDuration == 0) {
             Log.e("duration was zero");
             return 0;
@@ -132,18 +112,5 @@ class TransitionTracker {
         // Consider the command pattern
         // Consider interpolator
         return new NoChangeViscosityCommand().calculateDuration(currentDuration, timesAnimationViewed);
-    }
-
-    @SuppressWarnings("unchecked") // I'm a bad boy using reflection, but I know the cast is safe
-    private static List<Animator> getAnimators(Transition transition) {
-        List<Animator> animators = new ArrayList<>();
-        try {
-            Field animatorsField = Transition.class.getDeclaredField("mAnimators");
-            animatorsField.setAccessible(true);
-            animators.addAll((List<Animator>) animatorsField.get(transition));
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            Log.wtf("Oops can't get the animators from the transition.", e);
-        }
-        return animators;
     }
 }

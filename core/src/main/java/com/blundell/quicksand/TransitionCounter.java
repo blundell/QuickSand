@@ -5,20 +5,20 @@ import android.content.SharedPreferences;
 
 import java.util.Locale;
 
-class TransitionCountPreferences {
+class TransitionCounter {
 
     private static final String NAME = "TransitionCountPreferences";
     private static final String KEY_COUNT = "TransitionCount%s";
 
     private final SharedPreferences sharedPreferences;
 
-    private TransitionCountPreferences(SharedPreferences sharedPreferences) {
+    private TransitionCounter(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
     }
 
-    public static TransitionCountPreferences newInstance(Context context) {
+    public static TransitionCounter newInstangit ce(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
-        return new TransitionCountPreferences(sharedPreferences);
+        return new TransitionCounter(sharedPreferences);
     }
 
     public long getCount(String key) {  // a getter? hmm
