@@ -83,4 +83,7 @@ class TransitionTracker {
         monitoredAnimations.put(key, latestAnimationCountdown);
     }
 
+    public void resetTransition(String key) {
+        transitionCounter.resetCount(key);
+    }
 }

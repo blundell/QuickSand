@@ -39,10 +39,18 @@ public class Quicksand {
      * @param transition the transition to be manipulated
      */
     public static void trap(String key, Transition transition) {
-        if (transitionManipulator == null) {
-            throw new DeveloperError("Please call createSandTrap(Context) first to initialise this library."); // TODO use arrow logger
-        }
+        checkLibraryInstantiation();
         transitionManipulator.manipulate(key, transition);
     }
 
+    private static void checkLibraryInstantiation() {
+        if (transitionManipulator == null) {
+            throw new DeveloperError("Please call createSandTrap(Context) first to initialise this library."); // TODO use arrow logger
+        }
+    }
+
+    public static void resetTrap(String key) {
+        checkLibraryInstantiation();
+        transitionManipulator.resetTransition(key);
+    }
 }

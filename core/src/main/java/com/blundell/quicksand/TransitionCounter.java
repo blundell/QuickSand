@@ -33,4 +33,8 @@ class TransitionCounter {
     private String getCountKey(String key) {
         return String.format(Locale.UK, KEY_COUNT, key);
     }
+
+    public void resetCount(String key) {
+        sharedPreferences.edit().remove(key).apply();
+    }
 }
