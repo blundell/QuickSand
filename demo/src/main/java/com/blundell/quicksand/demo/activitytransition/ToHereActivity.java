@@ -1,4 +1,4 @@
-package com.blundell.quicksand.activitytransition;
+package com.blundell.quicksand.demo.activitytransition;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.transition.Explode;
 import android.transition.Transition;
 
 import com.blundell.quicksand.Quicksand;
-import com.blundell.quicksand.R;
+import com.blundell.quicksand.demo.R;
 
 public class ToHereActivity extends Activity {
 

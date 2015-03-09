@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.1"
 
     defaultConfig {
-        applicationId "com.blundell.quicksand"
+        applicationId "com.blundell.quicksand.demo"
         minSdkVersion 21
         targetSdkVersion 21
         versionCode 1

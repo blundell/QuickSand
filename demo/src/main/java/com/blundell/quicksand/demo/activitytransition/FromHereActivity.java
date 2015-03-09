@@ -1,4 +1,4 @@
-package com.blundell.quicksand.activitytransition;
+package com.blundell.quicksand.demo.activitytransition;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -9,7 +9,7 @@ import android.transition.Transition;
 import android.view.View;
 
 import com.blundell.quicksand.Quicksand;
-import com.blundell.quicksand.R;
+import com.blundell.quicksand.demo.R;
 
 public class FromHereActivity extends Activity {
 

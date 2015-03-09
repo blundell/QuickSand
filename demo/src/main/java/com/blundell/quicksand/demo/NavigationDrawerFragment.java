@@ -1,4 +1,4 @@
-package com.blundell.quicksand;
+package com.blundell.quicksand.demo;
 
 import android.app.ActionBar;
 import android.app.Activity;

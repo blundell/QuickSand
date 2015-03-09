@@ -1,6 +1,8 @@
-package com.blundell.quicksand;
+package com.blundell.quicksand.demo;
 
 import android.app.Application;
+
+import com.blundell.quicksand.Quicksand;
 
 public class DemoApplication extends Application {
 
