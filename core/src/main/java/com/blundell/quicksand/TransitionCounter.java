@@ -16,7 +16,7 @@ class TransitionCounter {
         this.sharedPreferences = sharedPreferences;
     }
 
-    public static TransitionCounter newInstangit ce(Context context) {
+    public static TransitionCounter newInstance(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
         return new TransitionCounter(sharedPreferences);
     }
