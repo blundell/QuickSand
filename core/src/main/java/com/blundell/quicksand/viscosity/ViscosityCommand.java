@@ -1,9 +1,9 @@
-package com.blundell.quicksand;
+package com.blundell.quicksand.viscosity;
 
 /**
  * Java command pattern
  */
-public interface SandCommand {
+public interface ViscosityCommand {
 
     /**
      * @param currentDuration how long the animation is at the moment

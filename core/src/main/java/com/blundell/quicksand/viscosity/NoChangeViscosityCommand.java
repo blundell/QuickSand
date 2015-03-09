@@ -1,6 +1,6 @@
-package com.blundell.quicksand;
+package com.blundell.quicksand.viscosity;
 
-public class NoChangeSandCommand implements SandCommand {
+public class NoChangeViscosityCommand implements ViscosityCommand {
     @Override
     public long calculateDuration(long currentDuration, long viewCount) {
         return currentDuration;

@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.os.CountDownTimer;
 import android.transition.Transition;
 
+import com.blundell.quicksand.viscosity.NoChangeViscosityCommand;
 import com.novoda.notils.logger.simple.Log;
 
 import java.lang.reflect.Field;
@@ -34,7 +35,7 @@ class TransitionTracker {
     //  this will most likely follow a design pattern: the command pattern?
     //  could be named algorithms like "expontential back off"
 
-    void manage(final String key, Transition transition) {
+    void manipulate(final String key, Transition transition) {
         transition.addListener(new Transition.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
@@ -130,7 +131,7 @@ class TransitionTracker {
         // Implement degradation algorithms here
         // Consider the command pattern
         // Consider interpolator
-        return new NoChangeSandCommand().calculateDuration(currentDuration, timesAnimationViewed);
+        return new NoChangeViscosityCommand().calculateDuration(currentDuration, timesAnimationViewed);
     }
 
     @SuppressWarnings("unchecked") // I'm a bad boy using reflection, but I know the cast is safe

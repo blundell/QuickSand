@@ -12,7 +12,7 @@ import com.novoda.notils.exception.DeveloperError;
  */
 public class Quicksand {
 
-    private static TransitionTracker transitionTracker;
+    private static TransitionTracker transitionManipulator;
 
     // This is the public facing API, act accordingly
 
@@ -26,11 +26,11 @@ public class Quicksand {
     public static void createSandTrap(Context context) {
         Context applicationContext = context.getApplicationContext();
         TransitionCountPreferences preferences = TransitionCountPreferences.newInstance(applicationContext);
-        transitionTracker = new TransitionTracker(preferences);
+        transitionManipulator = new TransitionTracker(preferences);
     }
 
     /**
-     * Quicksand will manipulate your transition duration based on the {@link com.blundell.quicksand.SandCommand} for the key.
+     * Quicksand will manipulate your transition duration based on the {@link com.blundell.quicksand.viscosity.ViscosityCommand} for the key.
      * Animations can be grouped by the same {@param key} so that the duration is not incremented multiple times for one group.
      * If you do not group by key, each transition will be treated separate and so will have an independent transition duration.
      *
@@ -38,10 +38,10 @@ public class Quicksand {
      * @param transition the transition to be manipulated
      */
     public static void trap(String key, Transition transition) {
-        if (transitionTracker == null) {
+        if (transitionManipulator == null) {
             throw new DeveloperError("Please call createSandTrap(Context) first to initialise this library."); // TODO use arrow logger
         }
-        transitionTracker.manage(key, transition);
+        transitionManipulator.manipulate(key, transition);
     }
 
 }
