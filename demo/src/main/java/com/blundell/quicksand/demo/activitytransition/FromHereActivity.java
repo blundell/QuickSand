@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.blundell.quicksand.Quicksand;
 import com.blundell.quicksand.demo.R;
 
+import java.util.concurrent.TimeUnit;
+
 public class FromHereActivity extends Activity {
 
     public static final String KEY_MY_ACTIVITY_TRANSITION = "MyActivityTransition";
@@ -19,7 +21,7 @@ public class FromHereActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Transition transition = new Explode();
+        Transition transition = getTransition();
         Quicksand.trap(KEY_MY_ACTIVITY_TRANSITION, transition);
         getWindow().setExitTransition(transition);
         setContentView(R.layout.activity_from_here);
@@ -40,6 +42,12 @@ public class FromHereActivity extends Activity {
                 Toast.makeText(FromHereActivity.this, "reset", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private Transition getTransition() {
+        Transition transition = new Explode();
+        transition.setDuration(TimeUnit.SECONDS.toMillis(6));
+        return transition;
     }
 
 }

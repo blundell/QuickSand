@@ -58,7 +58,7 @@ class TransitionTracker {
         if (viscosityMap.containsKey(key)) {
             return viscosityMap.get(key);
         } else {
-            return new LinearChangeViscosity();
+            return LinearChangeViscosity.defaultInstance();
         }
     }
 

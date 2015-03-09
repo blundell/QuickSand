@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.blundell.quicksand.Quicksand;
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
-import com.blundell.quicksand.viscosity.NoChangeViscosity;
+import com.blundell.quicksand.viscosity.LinearChangeViscosity;
 import com.blundell.quicksand.viscosity.Viscosity;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Map<String, Viscosity> viscosities = new HashMap<>();
-        viscosities.put(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION, new NoChangeViscosity());
+        viscosities.put(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION, LinearChangeViscosity.defaultInstance());
 
         Quicksand.create(this, viscosities);
     }
