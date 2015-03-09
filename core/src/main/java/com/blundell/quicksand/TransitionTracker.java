@@ -3,6 +3,8 @@ package com.blundell.quicksand;
 import android.os.CountDownTimer;
 import android.transition.Transition;
 
+import com.blundell.quicksand.viscosity.LinearChangeViscosity;
+import com.blundell.quicksand.viscosity.Viscosity;
 import com.novoda.notils.logger.simple.Log;
 
 import java.util.HashMap;
@@ -12,14 +14,16 @@ class TransitionTracker {
 
     private final Map<String, CountDownTimer> monitoredAnimations = new HashMap<>();
     private final DurationCalculator durationCalculator;
+    private final Map<String, Viscosity> viscosityMap;
 
     // Future enhancement: Use the Interpolator interface and classes to degrade properties
 
     private TransitionCounter transitionCounter;
 
-    TransitionTracker(TransitionCounter transitionCounter, DurationCalculator durationCalculator) {
+    TransitionTracker(TransitionCounter transitionCounter, DurationCalculator durationCalculator, Map<String, Viscosity> viscosityMap) {
         this.transitionCounter = transitionCounter;
         this.durationCalculator = durationCalculator;
+        this.viscosityMap = viscosityMap;
         Log.setShowLogs(true);
     }
 
@@ -33,7 +37,8 @@ class TransitionTracker {
             @Override
             protected void onTransitionStart(AccessibleTransition transition) {
                 long timesAnimationViewed = transitionCounter.getCount(key);
-                long transitionDuration = durationCalculator.calculateNewDuration(transition, timesAnimationViewed);
+                Viscosity viscosity = getViscosity(key);
+                long transitionDuration = durationCalculator.calculateNewDuration(transition, timesAnimationViewed, viscosity);
                 Log.d("Transition started " + key);
                 Log.d("Duration will be " + transitionDuration);
                 transition.setDuration(transitionDuration);
@@ -47,6 +52,14 @@ class TransitionTracker {
                 Log.d("Animation viewed : " + transitionCounter.getCount(key) + " times");
             }
         });
+    }
+
+    private Viscosity getViscosity(String key) {
+        if (viscosityMap.containsKey(key)) {
+            return viscosityMap.get(key);
+        } else {
+            return new LinearChangeViscosity();
+        }
     }
 
     /**

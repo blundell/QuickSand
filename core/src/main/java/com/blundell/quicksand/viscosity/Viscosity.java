@@ -3,7 +3,7 @@ package com.blundell.quicksand.viscosity;
 /**
  * Java command pattern
  */
-public interface ViscosityCommand {
+public interface Viscosity {
 
     /**
      * @param currentDuration how long the animation is at the moment

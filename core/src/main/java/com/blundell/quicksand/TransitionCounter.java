@@ -35,6 +35,8 @@ class TransitionCounter {
     }
 
     public void resetCount(String key) {
-        sharedPreferences.edit().remove(key).apply();
+        sharedPreferences.edit()
+                .remove(getCountKey(key))
+                .apply();
     }
 }
