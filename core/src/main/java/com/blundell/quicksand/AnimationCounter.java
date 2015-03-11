@@ -5,20 +5,20 @@ import android.content.SharedPreferences;
 
 import java.util.Locale;
 
-class TransitionCounter {
+class AnimationCounter {
 
-    private static final String NAME = "TransitionCountPreferences";
-    private static final String KEY_COUNT = "TransitionCount%s";
+    private static final String NAME = "AnimationCountPreferences";
+    private static final String KEY_COUNT = "AnimationCount%s";
 
     private final SharedPreferences sharedPreferences;
 
-    private TransitionCounter(SharedPreferences sharedPreferences) {
-        this.sharedPreferences = sharedPreferences;
+    public static AnimationCounter newInstance(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
+        return new AnimationCounter(sharedPreferences);
     }
 
-    public static TransitionCounter newInstance(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
-        return new TransitionCounter(sharedPreferences);
+    private AnimationCounter(SharedPreferences sharedPreferences) {
+        this.sharedPreferences = sharedPreferences;
     }
 
     public long getCount(String key) {  // a getter? hmm

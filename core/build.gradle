@@ -19,4 +19,6 @@ android {
 
 dependencies {
     compile 'com.novoda:notils:2.2.11'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
 }

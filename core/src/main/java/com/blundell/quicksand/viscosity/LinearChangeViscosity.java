@@ -1,5 +1,8 @@
 package com.blundell.quicksand.viscosity;
 
+/**
+ * Speeds up over time until 0 duration
+ */
 public class LinearChangeViscosity implements Viscosity {
     private static final int DEFAULT_MAX_VIEWS = 10;
 
@@ -15,11 +18,14 @@ public class LinearChangeViscosity implements Viscosity {
 
     @Override
     public long calculateDuration(long currentDuration, long viewCount) {
-        if (viewCount == maxViews) {
+        if (viewCount >= maxViews) {
             return 0;
         }
+        if (viewCount == 1) {
+            return currentDuration;
+        }
 
-        long viewCountAsPercent = maxViews / viewCount;
-        return currentDuration * viewCountAsPercent;
+        double viewCountAsPercent = (double) maxViews / viewCount;
+        return (long) (currentDuration - (currentDuration / viewCountAsPercent));
     }
 }

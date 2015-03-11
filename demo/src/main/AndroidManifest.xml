@@ -15,6 +15,7 @@
     <activity
       android:name=".activitytransition.ToHereActivity"
       android:label="@string/title_activity_to_here" />
+    <activity android:name=".viewanimation.ViewAnimateActivity" />
     <activity
       android:name="com.blundell.quicksand.demo.MainActivity"
       android:label="@string/title_activity_main">

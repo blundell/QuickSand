@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
+import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -34,8 +35,13 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        Intent intent = new Intent(this, FromHereActivity.class);
-        startActivity(intent);
+        if (position == 0) {
+            Intent intent = new Intent(this, FromHereActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, ViewAnimateActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void onSectionAttached(int number) {

@@ -2,12 +2,13 @@ package com.blundell.quicksand;
 
 import android.content.Context;
 import android.transition.Transition;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
 
 import com.blundell.quicksand.viscosity.Viscosity;
 import com.novoda.notils.exception.DeveloperError;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,7 +18,8 @@ import java.util.Map;
  */
 public class Quicksand {
 
-    private static TransitionTracker transitionManipulator;
+    private static TransitionManipulator transitionManipulator;
+    private static AnimationManipulator animationManipulator;
 
     // This is the public facing API, act accordingly
 
@@ -43,12 +45,12 @@ public class Quicksand {
      */
     public static void create(Context context, Map<String, Viscosity> viscosities) {
         Context applicationContext = context.getApplicationContext();
-        TransitionCounter counter = TransitionCounter.newInstance(applicationContext);
+        AnimationCounter counter = AnimationCounter.newInstance(applicationContext);
+        AnimationTracker tracker = new AnimationTracker(counter);
         DurationCalculator durationCalculator = new DurationCalculator();
-        Map<String, Viscosity> viscosityMap = new HashMap<>();
-        viscosityMap.putAll(viscosities);
-        transitionManipulator = new TransitionTracker(counter, durationCalculator, viscosityMap);
-
+        ViscosityCollection viscosityCollection = ViscosityCollection.newInstance(viscosities);
+        transitionManipulator = new TransitionManipulator(tracker, durationCalculator, viscosityCollection);
+        animationManipulator = new AnimationManipulator(tracker, durationCalculator, viscosityCollection);
     }
 
     /**
@@ -56,12 +58,31 @@ public class Quicksand {
      * Animations can be grouped by the same {@param key} so that the duration is not incremented multiple times for one group.
      * If you do not group by key, each transition will be treated separate and so will have an independent transition duration.
      *
-     * @param key        a unique key to group a set of transition
-     * @param transition the transition to be manipulated
+     * @param key         a unique key to group a set of transition
+     * @param transitions the transition or transitions to be manipulated
      */
-    public static void trap(String key, Transition transition) {
+    public static void trap(String key, Transition... transitions) {
         checkLibraryInstantiation();
-        transitionManipulator.manipulate(key, transition);
+        for (Transition transition : transitions) {
+            transitionManipulator.manipulate(key, transition);
+        }
+    }
+
+    public static void trap(String key, View... views) {
+        checkLibraryInstantiation();
+        ViewPropertyAnimator[] animators = new ViewPropertyAnimator[views.length];
+        for (int i = 0; i < views.length; i++) {
+            View v = views[i];
+            animators[i] = v.animate();
+        }
+        trap(key, animators);
+    }
+
+    public static void trap(String key, ViewPropertyAnimator... animators) {
+        checkLibraryInstantiation();
+        for (ViewPropertyAnimator animator : animators) {
+            animationManipulator.manipulate(key, animator);
+        }
     }
 
     /**
@@ -71,6 +92,7 @@ public class Quicksand {
      */
     public static void resetTrap(String key) {
         checkLibraryInstantiation();
+        animationManipulator.resetTransition(key);
         transitionManipulator.resetTransition(key);
     }
 

@@ -1,18 +1,23 @@
 package com.blundell.quicksand;
 
+import android.view.ViewPropertyAnimator;
+
 import com.blundell.quicksand.viscosity.Viscosity;
 import com.novoda.notils.logger.simple.Log;
 
 class DurationCalculator {
 
-    // Implement degradation algorithms as viscosity commands
-    // Consider where the user  can set these?
-    // We can have a map of keys vs viscosity & a default fallback, but where does this map sit?
-    // Consider the command pattern
-    // Consider interpolator
-
-    public long calculateNewDuration(AccessibleTransition transition, long timesAnimationViewed, Viscosity viscosity) {
+    public long calculateNewDuration(AccessibleTransition transition, long timesTransitionViewed, Viscosity viscosity) {
         long currentDuration = transition.getDuration();
+        return calculateDuration(timesTransitionViewed, viscosity, currentDuration);
+    }
+
+    public long calculateNewDuration(ViewPropertyAnimator animator, long timesAnimationViewed, Viscosity viscosity) {
+        long currentDuration = animator.getDuration();
+        return calculateDuration(timesAnimationViewed, viscosity, currentDuration);
+    }
+
+    private long calculateDuration(long timesAnimationViewed, Viscosity viscosity, long currentDuration) {
         if (currentDuration == 0) {
             Log.e("duration was zero");
             return 0;

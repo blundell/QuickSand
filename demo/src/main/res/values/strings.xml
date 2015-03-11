@@ -7,13 +7,17 @@
   <string name="hello_world">Hello world!</string>
   <string name="action_settings">Settings</string>
   <string name="title_activity_main">MainActivity</string>
-  <string name="title_section1">Section 1</string>
-  <string name="title_section2">Section 2</string>
+  <string name="title_section1">Activity Transition</string>
+  <string name="title_section2">Simple Button Animation</string>
   <string name="title_section3">Section 3</string>
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
   <string name="action_example">Example action</string>
   <string name="content_demo">only a demo</string>
   <string name="button_reset_transition_count">Reset transition views</string>
+  <string name="button_animate_me_show">Show</string>
+  <string name="button_animate_me_hide">Hide</string>
+  <string name="button_reset_animation_count">Reset animation views</string>
+  <string name="notify_reset">reset</string>
 
 </resources>
