@@ -29,4 +29,9 @@ abstract class AccessibleTransitionListener implements Transition.TransitionList
     public void onTransitionResume(Transition transition) {
         // not-used
     }
+
+    @Override
+    public void onTransitionEnd(Transition transition) {
+        // not-used
+    }
 }
