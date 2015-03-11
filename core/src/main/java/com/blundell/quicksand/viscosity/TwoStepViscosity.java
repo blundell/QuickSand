@@ -5,7 +5,13 @@ package com.blundell.quicksand.viscosity;
  */
 public class TwoStepViscosity implements Viscosity {
 
+    private static final int DEFAULT_MAX_VIEWS = 10;
+
     private final int stepThreshold;
+
+    public static Viscosity defaultInstance() {
+        return new TwoStepViscosity(DEFAULT_MAX_VIEWS);
+    }
 
     public TwoStepViscosity(int stepThreshold) {
         this.stepThreshold = stepThreshold;
