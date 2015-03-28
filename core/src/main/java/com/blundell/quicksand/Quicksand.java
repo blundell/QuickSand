@@ -47,7 +47,7 @@ public class Quicksand {
     public static void create(Context context, Map<String, Viscosity> viscosities) {
         Context applicationContext = context.getApplicationContext();
         AnimationCounter counter = AnimationCounter.newInstance(applicationContext);
-        AnimationTracker tracker = new AnimationTracker(counter);
+        AnimationTracker tracker = new AnimationTracker(counter, new CountDownTimerFactory());
         DurationCalculator durationCalculator = new DurationCalculator();
         ViscosityCollection viscosityCollection = ViscosityCollection.newInstance(viscosities);
         transitionManipulator = new TransitionManipulator(tracker, durationCalculator, viscosityCollection);

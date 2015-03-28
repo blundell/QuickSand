@@ -12,9 +12,11 @@ class AnimationTracker {
     private final Map<String, CountDownTimer> monitoredAnimations = new HashMap<>();
 
     private final AnimationCounter animationCounter;
+    private final CountDownTimerFactory timerFactory;
 
-    AnimationTracker(AnimationCounter animationCounter) {
+    AnimationTracker(AnimationCounter animationCounter, CountDownTimerFactory timerFactory) {
         this.animationCounter = animationCounter;
+        this.timerFactory = timerFactory;
     }
 
     /**
@@ -27,18 +29,12 @@ class AnimationTracker {
      * then we should only increment the view count once
      */
     public void incrementTransitionSetViewCount(final String key, long transitionDuration) {
-        CountDownTimer latestAnimationCountdown = new CountDownTimer(transitionDuration, transitionDuration) {
-
+        CountDownTimer latestAnimationCountdown = timerFactory.getTimer(transitionDuration, new Runnable() {
             @Override
-            public void onTick(long millisUntilFinished) {
-                // don't do anything on tick, that would be crazy
-            }
-
-            @Override
-            public void onFinish() {
+            public void run() {
                 monitoredAnimations.remove(key);
             }
-        };
+        });
         latestAnimationCountdown.start();
 
         CountDownTimer parallelAnimationCountdown = monitoredAnimations.get(key);
