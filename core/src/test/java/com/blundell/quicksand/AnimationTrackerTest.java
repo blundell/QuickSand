@@ -7,9 +7,11 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class AnimationTrackerTest {
 
@@ -31,27 +33,37 @@ public class AnimationTrackerTest {
     }
 
     @Test
-    public void givenAnAnimationIsNotPartOfASetWhenIncrementViewCountIsAttemptedThenThereIsAnIncrement() throws Exception {
-        tracker.attemptToIncrementAnimationSetViewCount("TestKey", ANY_DURATION);
+    public void givenAnAnimationIsNotPartOfASetWhenWeAskThenItSaysItsANewAnimation() throws Exception {
+        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimation("TestKey", ANY_DURATION);
 
-        verify(mockCounter).incrementCount("TestKey");
+        assertThat(startOfANewAnimation).isTrue();
     }
 
     @Test
-    public void givenAnAnimationIsPartOfASetWhenIncrementIsAttemptedThenThereIsOnlyOneIncrement() throws Exception {
-        tracker.attemptToIncrementAnimationSetViewCount("TestKey", ANY_DURATION);
-        tracker.attemptToIncrementAnimationSetViewCount("TestKey", ANY_DURATION);
-        tracker.attemptToIncrementAnimationSetViewCount("TestKey", ANY_DURATION);
+    public void givenAnAnimationIsPartOfASetWhenWeAskThenThereItSaysItIsNotANewAnimation() throws Exception {
+        String setKey = "TestKey";
+        tracker.isTheStartOfANewAnimation(setKey, ANY_DURATION);
 
-        verify(mockCounter, times(1)).incrementCount("TestKey");
+        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimation(setKey, ANY_DURATION);
+
+        assertThat(startOfANewAnimation).isFalse();
     }
 
     @Test
-    public void givenTwoAnimationsAreNotPartOfASetWhenIncrementViewCountIsAttemptedThenThereIsTwoIncrements() throws Exception {
-        tracker.attemptToIncrementAnimationSetViewCount("TestKey1", ANY_DURATION);
-        tracker.attemptToIncrementAnimationSetViewCount("TestKey2", ANY_DURATION);
+    public void givenTwoAnimationsAreNotPartOfASetWhenWeAskThenThereIsTwoIncrements() throws Exception {
+        tracker.isTheStartOfANewAnimation("TestKey1", ANY_DURATION);
 
-        verify(mockCounter, times(2)).incrementCount(anyString());
+        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimation("TestKey2", ANY_DURATION);
+
+        assertThat(startOfANewAnimation).isTrue();
+    }
+
+    @Test
+    public void whenIncrementViewCountThenDelegatesToCounter() throws Exception {
+        String expectedKey = "TestKey";
+        tracker.incrementAnimationViewCount(expectedKey);
+
+        verify(mockCounter).incrementCount(expectedKey);
     }
 
     @Test

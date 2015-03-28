@@ -25,7 +25,9 @@ class TransitionManipulator {
                 long transitionDuration = durationCalculator.calculateNewDuration(transition, timesTransitionViewed, viscosity);
                 transition.setDuration(transitionDuration);
 
-                animationTracker.attemptToIncrementAnimationSetViewCount(key, transitionDuration);
+                if (animationTracker.isTheStartOfANewAnimation(key, transitionDuration)) {
+                    animationTracker.incrementAnimationViewCount(key);
+                }
             }
         });
     }

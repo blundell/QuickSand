@@ -2,8 +2,6 @@ package com.blundell.quicksand;
 
 import android.os.CountDownTimer;
 
-import com.novoda.notils.logger.simple.Log;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,15 +18,18 @@ class AnimationTracker {
     }
 
     /**
-     * TODO it could be useful to know if this animation is part of a set of anims elsewhere - split this method into two
      * <p/>
-     * When an animation starts we increment the number of views
-     * If a previous animation is running with the same key we do not increment the number of views
-     * This is how we group a set of animations
-     * As long as they are started in a chain like fashion i.e. start before the previous ends
-     * then we should only increment the view count once
+     * We define a set of animations by:
+     * all having the same key
+     * starting in a chain like fashion i.e. start before the previous ends
+     * <p/>
+     * Once the first animation duration has finished any new animation with the same key is defined as a new start
+     *
+     * @param key                the key that binds the set of animations
+     * @param transitionDuration how long this animation (key) will run for
+     * @return true if this is the first animation in a set of animations
      */
-    public void attemptToIncrementAnimationSetViewCount(final String key, long transitionDuration) {
+    public boolean isTheStartOfANewAnimation(final String key, long transitionDuration) {
         CountDownTimer latestAnimationCountdown = timerFactory.getTimer(transitionDuration, new Runnable() {
             @Override
             public void run() {
@@ -38,13 +39,19 @@ class AnimationTracker {
         latestAnimationCountdown.start();
 
         CountDownTimer parallelAnimationCountdown = monitoredAnimations.get(key);
+        boolean isANewAnimationSet;
         if (parallelAnimationCountdown == null) {
-            animationCounter.incrementCount(key);
+            isANewAnimationSet = true;
         } else {
             parallelAnimationCountdown.cancel();
-            Log.d("Animation is part of a group");
+            isANewAnimationSet = false;
         }
         monitoredAnimations.put(key, latestAnimationCountdown);
+        return isANewAnimationSet;
+    }
+
+    public void incrementAnimationViewCount(String key) {
+        animationCounter.incrementCount(key);
     }
 
     public long getCount(String key) {
