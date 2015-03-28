@@ -10,7 +10,7 @@ class CountDownTimerFactory {
         return countDownTimer;
     }
 
-    private static final class OneShotCountDownTimer extends CountDownTimer {
+    static final class OneShotCountDownTimer extends CountDownTimer {
 
         private Runnable onFinish;
 
