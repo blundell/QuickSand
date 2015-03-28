@@ -4,7 +4,7 @@ import android.transition.Transition;
 
 /**
  * A simpler listener that uses our {@link com.blundell.quicksand.AccessibleTransition} and only enforces
- * to override start and end
+ * to override start
  */
 abstract class AccessibleTransitionListener implements Transition.TransitionListener {
     @Override
