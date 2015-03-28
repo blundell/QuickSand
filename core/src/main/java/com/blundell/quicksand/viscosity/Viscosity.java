@@ -1,7 +1,7 @@
 package com.blundell.quicksand.viscosity;
 
 /**
- * Java command pattern
+ * Viscosity is how you determine the speed of your animations change over time
  */
 public interface Viscosity {
 

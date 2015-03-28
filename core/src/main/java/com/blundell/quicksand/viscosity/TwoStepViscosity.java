@@ -1,7 +1,7 @@
 package com.blundell.quicksand.viscosity;
 
 /**
- * Will return one duration then after a threshold return half of that
+ * Will return one duration then after a threshold of X return half of the duration
  */
 public class TwoStepViscosity implements Viscosity {
 

@@ -1,7 +1,7 @@
 package com.blundell.quicksand.viscosity;
 
 /**
- * Will return the current transition duration without change upto a maximum and then return 0
+ * Will return the current transition duration without change up to a maximum of X views and then return 0
  */
 public class AllOrNothingViscosity implements Viscosity {
 
