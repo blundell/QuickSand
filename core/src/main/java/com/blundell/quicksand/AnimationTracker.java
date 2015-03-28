@@ -28,7 +28,7 @@ class AnimationTracker {
      * As long as they are started in a chain like fashion i.e. start before the previous ends
      * then we should only increment the view count once
      */
-    public void incrementTransitionSetViewCount(final String key, long transitionDuration) {
+    public void attemptToIncrementAnimationSetViewCount(final String key, long transitionDuration) {
         CountDownTimer latestAnimationCountdown = timerFactory.getTimer(transitionDuration, new Runnable() {
             @Override
             public void run() {
