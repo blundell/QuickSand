@@ -28,6 +28,7 @@ public class Quicksand {
      * Only needs to be called once.
      * You will most likely want to call this in onCreate of your (@link android.app.Application}.
      * Using this method means you cannot have different animation degradation speeds per key
+     * see {@link #create(Context, Map)} for this use.
      *
      * @param context any context, we will take the application context from this to avoid activity leaks
      */
