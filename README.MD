@@ -30,6 +30,26 @@ QuickSand.trap("MyAnimationSetKey", myView);
 myView.animate().alpha().start();
 ```
 
+Also works for multiple view animation:
+
+```java
+ View myView = findViewById(R.id.my_view);
+ View myOtherView = findViewById(R.id.my_view);
+ View myThirdView = findViewById(R.id.my_view);
+ QuickSand.trap("MyAnimationSetKey", myView, myOtherView, myThirdView);
+ myView.animate().alpha().start();
+ myOtherView.animate().alpha().start();
+ myThirdView.animate().alpha().start();
+```
+
+Some viscosities already defined:
+
+AllOrNothing - you can run your animation for X seconds X times and then 0 seconds after that
+LinearChange - speed up the animation each time it is viewed until X views
+TwoStep - run animation at X speed for X times then it will run at X/2
+
+See the demo project for more examples.
+
 Download
 --------
 

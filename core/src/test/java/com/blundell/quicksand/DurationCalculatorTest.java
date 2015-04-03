@@ -1,7 +1,6 @@
 package com.blundell.quicksand;
 
-import android.view.ViewPropertyAnimator;
-
+import com.blundell.quicksand.act.Act;
 import com.blundell.quicksand.viscosity.Viscosity;
 
 import org.junit.Before;
@@ -16,9 +15,7 @@ import static org.mockito.Mockito.when;
 public class DurationCalculatorTest {
 
     @Mock
-    AccessibleTransition mockTransition;
-    @Mock
-    ViewPropertyAnimator mockViewPropertyAnimator;
+    Act mockAct;
     @Mock
     Viscosity mockViscosity;
     private DurationCalculator calc;
@@ -30,61 +27,31 @@ public class DurationCalculatorTest {
     }
 
     @Test
-    public void givenTransitionHasDurationZeroWhenDurationCalculatedThenCalculatedDurationIsZero() throws Exception {
-        when(mockTransition.getDuration()).thenReturn(0L);
+    public void givenActHasDurationZeroWhenDurationCalculatedThenCalculatedDurationIsZero() throws Exception {
+        when(mockAct.getDuration()).thenReturn(0L);
 
-        long duration = calc.calculateNewDuration(mockTransition, 0, mockViscosity);
-
-        assertThat(duration).isEqualTo(0L);
-    }
-
-    @Test
-    public void givenViewPropertyAnimatorHasDurationZeroWhenDurationCalculatedThenCalculatedDurationIsZero() throws Exception {
-        when(mockViewPropertyAnimator.getDuration()).thenReturn(0L);
-
-        long duration = calc.calculateNewDuration(mockViewPropertyAnimator, 0, mockViscosity);
+        long duration = calc.calculateNewDuration(mockAct, 0, mockViscosity);
 
         assertThat(duration).isEqualTo(0L);
     }
 
     @Test
-    public void givenTransitionViewedForFirstTimeWhenDurationCalculatedThenCalculatedDurationIsCurrentDuration() throws Exception {
+    public void givenActViewedForFirstTimeWhenDurationCalculatedThenCalculatedDurationIsCurrentDuration() throws Exception {
         long currentDuration = 50L;
-        when(mockTransition.getDuration()).thenReturn(currentDuration);
+        when(mockAct.getDuration()).thenReturn(currentDuration);
 
-        long duration = calc.calculateNewDuration(mockTransition, 0, mockViscosity);
+        long duration = calc.calculateNewDuration(mockAct, 0, mockViscosity);
 
         assertThat(duration).isEqualTo(currentDuration);
     }
 
     @Test
-    public void givenViewPropertyAnimatorViewedForFirstTimeWhenDurationCalculatedThenCalculatedDurationIsCurrentDuration() throws Exception {
-        long currentDuration = 50L;
-        when(mockViewPropertyAnimator.getDuration()).thenReturn(currentDuration);
-
-        long duration = calc.calculateNewDuration(mockViewPropertyAnimator, 0, mockViscosity);
-
-        assertThat(duration).isEqualTo(currentDuration);
-    }
-
-    @Test
-    public void givenATransitionWhenDurationCalculatedThenCalculatedDurationIsDelegatedToTheViscosity() throws Exception {
+    public void givenAnActWhenDurationCalculatedThenCalculatedDurationIsDelegatedToTheViscosity() throws Exception {
         int timesTransitionViewed = 1;
         long currentDuration = 50L;
-        when(mockTransition.getDuration()).thenReturn(currentDuration);
+        when(mockAct.getDuration()).thenReturn(currentDuration);
 
-        calc.calculateNewDuration(mockTransition, timesTransitionViewed, mockViscosity);
-
-        verify(mockViscosity).calculateDuration(currentDuration, timesTransitionViewed);
-    }
-
-    @Test
-    public void givenAViewPropertyAnimatorWhenDurationCalculatedThenCalculatedDurationIsDelegatedToTheViscosity() throws Exception {
-        int timesTransitionViewed = 1;
-        long currentDuration = 50L;
-        when(mockViewPropertyAnimator.getDuration()).thenReturn(currentDuration);
-
-        calc.calculateNewDuration(mockViewPropertyAnimator, timesTransitionViewed, mockViscosity);
+        calc.calculateNewDuration(mockAct, timesTransitionViewed, mockViscosity);
 
         verify(mockViscosity).calculateDuration(currentDuration, timesTransitionViewed);
     }

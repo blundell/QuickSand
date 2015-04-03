@@ -5,10 +5,13 @@ import android.transition.Transition;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 
+import com.blundell.quicksand.act.Act;
+import com.blundell.quicksand.act.ActFactory;
 import com.blundell.quicksand.viscosity.Viscosity;
 import com.novoda.notils.exception.DeveloperError;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,8 +21,8 @@ import java.util.Map;
  */
 public class Quicksand {
 
-    private static TransitionManipulator transitionManipulator;
-    private static AnimationManipulator animationManipulator;
+    private static ActManipulator actManipulator;
+    private static ActFactory actFactory;
 
     // This is the public facing API, act accordingly
 
@@ -50,8 +53,8 @@ public class Quicksand {
         AnimationTracker tracker = new AnimationTracker(counter, new CountDownTimerFactory());
         DurationCalculator durationCalculator = new DurationCalculator();
         ViscosityCollection viscosityCollection = ViscosityCollection.newInstance(viscosities);
-        transitionManipulator = new TransitionManipulator(tracker, durationCalculator, viscosityCollection);
-        animationManipulator = new AnimationManipulator(tracker, durationCalculator, viscosityCollection);
+        actManipulator = new ActManipulator(tracker, durationCalculator, viscosityCollection);
+        actFactory = new ActFactory();
     }
 
     /**
@@ -64,9 +67,8 @@ public class Quicksand {
      */
     public static void trap(String key, Transition... transitions) {
         checkLibraryInstantiation();
-        for (Transition transition : transitions) {
-            transitionManipulator.manipulate(key, transition);
-        }
+        List<Act> acts = actFactory.getActs(transitions);
+        trap(key, acts);
     }
 
     public static void trap(String key, View... views) {
@@ -81,8 +83,13 @@ public class Quicksand {
 
     public static void trap(String key, ViewPropertyAnimator... animators) {
         checkLibraryInstantiation();
-        for (ViewPropertyAnimator animator : animators) {
-            animationManipulator.manipulate(key, animator);
+        List<Act> acts = actFactory.getActs(animators);
+        trap(key, acts);
+    }
+
+    private static void trap(String key, List<Act> acts) {
+        for (Act act : acts) {
+            actManipulator.manipulate(key, act);
         }
     }
 
@@ -93,12 +100,11 @@ public class Quicksand {
      */
     public static void resetTrap(String key) {
         checkLibraryInstantiation();
-        animationManipulator.resetTransition(key);
-        transitionManipulator.resetTransition(key);
+        actManipulator.resetTransition(key);
     }
 
     private static void checkLibraryInstantiation() {
-        if (transitionManipulator == null) {
+        if (actManipulator == null) {
             throw new DeveloperError("Please call create(Context) first to initialise this library."); // TODO use arrow logger
         }
     }

@@ -1,4 +1,4 @@
-package com.blundell.quicksand;
+package com.blundell.quicksand.act;
 
 import android.animation.Animator;
 import android.transition.Transition;
@@ -20,15 +20,6 @@ class AccessibleTransition {
         this.transition = transition;
     }
 
-    public void setDuration(long duration) {
-        transition.setDuration(duration);
-    }
-
-    public long getDuration() {
-        List<Animator> animators = getAnimators(transition);
-        return animators.get(0).getDuration();
-    }
-
     @SuppressWarnings("unchecked") // I'm a bad boy using reflection, but I know the cast is safe
     private static List<Animator> getAnimators(Transition transition) {
         List<Animator> animators = new ArrayList<>();
@@ -40,5 +31,22 @@ class AccessibleTransition {
             Log.wtf(e, "Oops can't get the animators from the transition.");
         }
         return animators;
+    }
+
+    public long getDuration() {
+        List<Animator> animators = getAnimators(transition);
+        if (animators.isEmpty()) {
+            return transition.getDuration();
+        } else {
+            return animators.get(0).getDuration();
+        }
+    }
+
+    public void setDuration(long duration) {
+        transition.setDuration(duration);
+    }
+
+    public void addListener(Transition.TransitionListener listener) {
+        transition.addListener(listener);
     }
 }

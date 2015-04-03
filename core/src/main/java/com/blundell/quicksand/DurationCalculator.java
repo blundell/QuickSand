@@ -1,20 +1,15 @@
 package com.blundell.quicksand;
 
-import android.view.ViewPropertyAnimator;
-
+import com.blundell.quicksand.act.Act;
 import com.blundell.quicksand.viscosity.Viscosity;
 import com.novoda.notils.logger.simple.Log;
 
 class DurationCalculator {
 
-    public long calculateNewDuration(AccessibleTransition transition, long timesTransitionViewed, Viscosity viscosity) {
-        long currentDuration = transition.getDuration();
+    public long calculateNewDuration(Act act, long timesTransitionViewed, Viscosity viscosity) {
+        long currentDuration = act.getDuration();
+        Log.d("DUR xxx " + currentDuration);
         return calculateDuration(timesTransitionViewed, viscosity, currentDuration);
-    }
-
-    public long calculateNewDuration(ViewPropertyAnimator animator, long timesAnimationViewed, Viscosity viscosity) {
-        long currentDuration = animator.getDuration();
-        return calculateDuration(timesAnimationViewed, viscosity, currentDuration);
     }
 
     private long calculateDuration(long timesAnimationViewed, Viscosity viscosity, long currentDuration) {

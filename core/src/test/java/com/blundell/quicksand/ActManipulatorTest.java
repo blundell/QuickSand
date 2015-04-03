@@ -6,7 +6,7 @@ import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.verify;
 
-public class TransitionManipulatorTest {
+public class ActManipulatorTest {
 
     @Mock
     private AnimationTracker mockAnimationTracker;
@@ -14,11 +14,12 @@ public class TransitionManipulatorTest {
     @Test
     public void whenResetTransitionIsCalledThenWeDelegateToThe() throws Exception {
         MockitoAnnotations.initMocks(this);
-        TransitionManipulator manipulator = new TransitionManipulator(mockAnimationTracker, null, null);
+        ActManipulator manipulator = new ActManipulator(mockAnimationTracker, null, null);
         String expectedKey = "ExpectedKey";
 
         manipulator.resetTransition(expectedKey);
 
         verify(mockAnimationTracker).resetCount(expectedKey);
     }
+
 }

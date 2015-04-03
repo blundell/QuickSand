@@ -26,22 +26,24 @@ public class FromHereActivity extends Activity {
         getWindow().setExitTransition(transition);
         setContentView(R.layout.activity_from_here);
 
-        findViewById(R.id.from_here_image).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ToHereActivity.class);
-                Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(FromHereActivity.this).toBundle();
-                startActivity(intent, bundle);
-            }
-        });
+        findViewById(R.id.from_here_image).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), ToHereActivity.class);
+                        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(FromHereActivity.this).toBundle();
+                        startActivity(intent, bundle);
+                    }
+                });
 
-        findViewById(R.id.button_reset_transition_count).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Quicksand.resetTrap(KEY_MY_ACTIVITY_TRANSITION);
-                Toast.makeText(FromHereActivity.this, R.string.notify_reset, Toast.LENGTH_SHORT).show();
-            }
-        });
+        findViewById(R.id.button_reset_transition_count).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Quicksand.resetTrap(KEY_MY_ACTIVITY_TRANSITION);
+                        Toast.makeText(FromHereActivity.this, R.string.notify_reset, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private Transition getTransition() {

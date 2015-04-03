@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -42,9 +43,10 @@ public class ViewAnimateActivity extends Activity {
         public void onClick(View v) {
             if (clickedShow()) {
 
-                animateButton
+                ViewPropertyAnimator propertyAnimator = animateButton
                         .animate()
                         .alpha(0F)
+                        .setDuration(500L)
                         .translationY(sandImage.getHeight())
                         .setListener(new AnimatorListenerAdapter() {
                             @Override
@@ -53,28 +55,34 @@ public class ViewAnimateActivity extends Activity {
                                 animateButton
                                         .animate()
                                         .alpha(1F)
+                                        .setDuration(500L)
                                         .start();
                             }
-                        })
-                        .start();
+                        });
 
-                sandImage
+                ViewPropertyAnimator viewPropertyAnimator = sandImage
                         .animate()
                         .alpha(1F)
+                        .setDuration(500L)
                         .setListener(new AnimatorListenerAdapter() {
                             @Override
                             public void onAnimationStart(Animator animation) {
                                 sandImage.setVisibility(View.VISIBLE);
                             }
-                        })
+                        });
+                Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
+
+                propertyAnimator
+                        .start();
+                viewPropertyAnimator
                         .start();
 
-                Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
             } else {
-                animateButton
+                ViewPropertyAnimator animator = animateButton
                         .animate()
                         .alpha(0F)
                         .translationYBy(-sandImage.getHeight())
+                        .setDuration(500L)
                         .setListener(new AnimatorListenerAdapter() {
                             @Override
                             public void onAnimationEnd(Animator animation) {
@@ -82,23 +90,28 @@ public class ViewAnimateActivity extends Activity {
                                 animateButton
                                         .animate()
                                         .alpha(1F)
+                                        .setDuration(500L)
                                         .start();
                             }
-                        })
-                        .start();
+                        });
 
-                sandImage
+                ViewPropertyAnimator viewPropertyAnimator = sandImage
                         .animate()
                         .alpha(0F)
+                        .setDuration(500L)
                         .setListener(new AnimatorListenerAdapter() {
                             @Override
                             public void onAnimationEnd(Animator animation) {
                                 sandImage.setVisibility(View.INVISIBLE);
                             }
-                        })
+                        });
+                Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
+
+                animator
+                        .start();
+                viewPropertyAnimator
                         .start();
 
-                Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
             }
         }
 
