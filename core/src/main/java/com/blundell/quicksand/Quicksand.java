@@ -10,7 +10,6 @@ import com.blundell.quicksand.act.ActFactory;
 import com.blundell.quicksand.viscosity.Viscosity;
 import com.novoda.notils.exception.DeveloperError;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -25,19 +24,6 @@ public class Quicksand {
     private static ActFactory actFactory;
 
     // This is the public facing API, act accordingly
-
-    /**
-     * Initialises the Quicksand library.
-     * Only needs to be called once.
-     * You will most likely want to call this in onCreate of your (@link android.app.Application}.
-     * Using this method means you cannot have different animation degradation speeds per key
-     * see {@link #create(Context, Map)} for this use.
-     *
-     * @param context any context, we will take the application context from this to avoid activity leaks
-     */
-    public static void create(Context context) {
-        create(context, Collections.<String, Viscosity>emptyMap());
-    }
 
     /**
      * Initialises the Quicksand library adding a Map of viscosities which allow you to change transition duration over time.

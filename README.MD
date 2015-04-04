@@ -11,16 +11,6 @@ Simple Use
 ----------
 
 ```java
-Quicksand.create(this);
-
-View myView = findViewById(R.id.my_view);
-QuickSand.trap("MyAnimationSetKey", myView);
-myView.animate().alpha().start();
-```
-
-Customising the way your animation changes it's duration:
-
-```java
 Map<String, Viscosity> modifiers = new HashMap<>();
 modifiers.put("MyAnimationSetKey", TwoStepViscosity.defaultInstance());
 Quicksand.create(this, modifiers);
