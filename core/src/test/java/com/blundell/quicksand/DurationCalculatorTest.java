@@ -1,6 +1,5 @@
 package com.blundell.quicksand;
 
-import com.blundell.quicksand.act.Act;
 import com.blundell.quicksand.viscosity.Viscosity;
 
 import org.junit.Before;
@@ -10,14 +9,12 @@ import org.mockito.MockitoAnnotations;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class DurationCalculatorTest {
 
     @Mock
-    Act mockAct;
-    @Mock
     Viscosity mockViscosity;
+
     private DurationCalculator calc;
 
     @Before
@@ -28,9 +25,9 @@ public class DurationCalculatorTest {
 
     @Test
     public void givenActHasDurationZeroWhenDurationCalculatedThenCalculatedDurationIsZero() throws Exception {
-        when(mockAct.getDuration()).thenReturn(0L);
+        long currentDuration = 0L;
 
-        long duration = calc.calculateNewDuration(mockAct, 0, mockViscosity);
+        long duration = calc.calculateNewDuration(0, mockViscosity, currentDuration);
 
         assertThat(duration).isEqualTo(0L);
     }
@@ -38,9 +35,8 @@ public class DurationCalculatorTest {
     @Test
     public void givenActViewedForFirstTimeWhenDurationCalculatedThenCalculatedDurationIsCurrentDuration() throws Exception {
         long currentDuration = 50L;
-        when(mockAct.getDuration()).thenReturn(currentDuration);
 
-        long duration = calc.calculateNewDuration(mockAct, 0, mockViscosity);
+        long duration = calc.calculateNewDuration(0, mockViscosity, currentDuration);
 
         assertThat(duration).isEqualTo(currentDuration);
     }
@@ -49,9 +45,8 @@ public class DurationCalculatorTest {
     public void givenAnActWhenDurationCalculatedThenCalculatedDurationIsDelegatedToTheViscosity() throws Exception {
         int timesTransitionViewed = 1;
         long currentDuration = 50L;
-        when(mockAct.getDuration()).thenReturn(currentDuration);
 
-        calc.calculateNewDuration(mockAct, timesTransitionViewed, mockViscosity);
+        calc.calculateNewDuration(timesTransitionViewed, mockViscosity, currentDuration);
 
         verify(mockViscosity).calculateDuration(currentDuration, timesTransitionViewed);
     }

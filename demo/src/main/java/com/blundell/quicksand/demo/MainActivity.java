@@ -2,15 +2,11 @@ package com.blundell.quicksand.demo;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
@@ -36,25 +32,13 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         if (position == 0) {
+            // Home
+        } else if (position == 1) {
             Intent intent = new Intent(this, FromHereActivity.class);
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, ViewAnimateActivity.class);
             startActivity(intent);
-        }
-    }
-
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                title = getString(R.string.title_section1);
-                break;
-            case 2:
-                title = getString(R.string.title_section2);
-                break;
-            case 3:
-                title = getString(R.string.title_section3);
-                break;
         }
     }
 
@@ -86,32 +70,4 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
         return super.onOptionsItemSelected(item);
     }
-
-    public static class PlaceholderFragment extends Fragment {
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
-        }
-    }
-
 }

@@ -19,5 +19,6 @@
   <string name="button_animate_me_hide">Hide</string>
   <string name="button_reset_animation_count">Reset animation views</string>
   <string name="notify_reset">reset</string>
+  <string name="home">Demo Home</string>
 
 </resources>

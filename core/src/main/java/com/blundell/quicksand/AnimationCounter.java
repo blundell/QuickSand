@@ -9,6 +9,7 @@ class AnimationCounter {
 
     private static final String NAME = "AnimationCountPreferences";
     private static final String KEY_COUNT = "AnimationCount%s";
+    private static final String KEY_DURATION = "Duration%s";
 
     private final SharedPreferences sharedPreferences;
 
@@ -38,5 +39,19 @@ class AnimationCounter {
         sharedPreferences.edit()
                 .remove(getCountKey(key))
                 .apply();
+    }
+
+    public long getDuration(String key) {
+        return sharedPreferences.getLong(getDurationKey(key), 0);
+    }
+
+    public void saveDuration(long duration, String key) {
+        sharedPreferences.edit()
+                .putLong(getDurationKey(key), duration)
+                .apply();
+    }
+
+    private String getDurationKey(String key) {
+        return String.format(Locale.UK, KEY_DURATION, key);
     }
 }

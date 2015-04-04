@@ -29,13 +29,15 @@ public class ViewAnimateActivity extends Activity {
         sandImage = (ImageView) findViewById(R.id.image_animate);
         animateButton.setOnClickListener(onClickAnimateButton);
 
-        findViewById(R.id.button_reset_animation_count).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Quicksand.resetTrap(KEY_ANIM_SHOW_HIDE);
-                Toast.makeText(ViewAnimateActivity.this, R.string.notify_reset, Toast.LENGTH_SHORT).show();
-            }
-        });
+        findViewById(R.id.button_reset_animation_count).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Quicksand.resetTrap(KEY_ANIM_SHOW_HIDE);
+                        Toast.makeText(ViewAnimateActivity.this, R.string.notify_reset, Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
     }
 
     private final View.OnClickListener onClickAnimateButton = new View.OnClickListener() {
@@ -48,28 +50,30 @@ public class ViewAnimateActivity extends Activity {
                         .alpha(0F)
                         .setDuration(500L)
                         .translationY(sandImage.getHeight())
-                        .setListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                animateButton.setText(R.string.button_animate_me_hide);
-                                animateButton
-                                        .animate()
-                                        .alpha(1F)
-                                        .setDuration(500L)
-                                        .start();
-                            }
-                        });
+                        .setListener(
+                                new AnimatorListenerAdapter() {
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        animateButton.setText(R.string.button_animate_me_hide);
+                                        animateButton
+                                                .animate()
+                                                .alpha(1F)
+                                                .setDuration(500L)
+                                                .start();
+                                    }
+                                });
 
                 ViewPropertyAnimator viewPropertyAnimator = sandImage
                         .animate()
                         .alpha(1F)
                         .setDuration(500L)
-                        .setListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationStart(Animator animation) {
-                                sandImage.setVisibility(View.VISIBLE);
-                            }
-                        });
+                        .setListener(
+                                new AnimatorListenerAdapter() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+                                        sandImage.setVisibility(View.VISIBLE);
+                                    }
+                                });
                 Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
 
                 propertyAnimator
@@ -83,28 +87,30 @@ public class ViewAnimateActivity extends Activity {
                         .alpha(0F)
                         .translationYBy(-sandImage.getHeight())
                         .setDuration(500L)
-                        .setListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                animateButton.setText(R.string.button_animate_me_show);
-                                animateButton
-                                        .animate()
-                                        .alpha(1F)
-                                        .setDuration(500L)
-                                        .start();
-                            }
-                        });
+                        .setListener(
+                                new AnimatorListenerAdapter() {
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        animateButton.setText(R.string.button_animate_me_show);
+                                        animateButton
+                                                .animate()
+                                                .alpha(1F)
+                                                .setDuration(500L)
+                                                .start();
+                                    }
+                                });
 
                 ViewPropertyAnimator viewPropertyAnimator = sandImage
                         .animate()
                         .alpha(0F)
                         .setDuration(500L)
-                        .setListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                sandImage.setVisibility(View.INVISIBLE);
-                            }
-                        });
+                        .setListener(
+                                new AnimatorListenerAdapter() {
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        sandImage.setVisibility(View.INVISIBLE);
+                                    }
+                                });
                 Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
 
                 animator

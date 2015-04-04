@@ -13,5 +13,7 @@ public interface Act {
 
     interface StartListener {
         void onStart(Act act);
+
+        void onFinish(Act act);
     }
 }

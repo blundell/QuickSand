@@ -42,6 +42,7 @@ public class FromHereActivity extends Activity {
                     public void onClick(View v) {
                         Quicksand.resetTrap(KEY_MY_ACTIVITY_TRANSITION);
                         Toast.makeText(FromHereActivity.this, R.string.notify_reset, Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 });
     }

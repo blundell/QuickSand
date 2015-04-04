@@ -2,6 +2,8 @@ package com.blundell.quicksand;
 
 import android.os.CountDownTimer;
 
+import com.blundell.quicksand.act.Act;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,17 +27,18 @@ class AnimationTracker {
      * <p/>
      * Once the first animation duration has finished any new animation with the same key is defined as a new start
      *
-     * @param key                the key that binds the set of animations
-     * @param transitionDuration how long this animation (key) will run for
+     * @param key      the key that binds the set of animations
+     * @param duration how long this animation (key) will run for
      * @return true if this is the first animation in a set of animations
      */
-    public boolean isTheStartOfANewAnimation(final String key, long transitionDuration) {
-        CountDownTimer latestAnimationCountdown = timerFactory.getTimer(transitionDuration, new Runnable() {
-            @Override
-            public void run() {
-                monitoredAnimations.remove(key);
-            }
-        });
+    public boolean isTheStartOfANewAnimation(final String key, long duration) {
+        CountDownTimer latestAnimationCountdown = timerFactory.getTimer(
+                duration, new Runnable() {
+                    @Override
+                    public void run() {
+                        monitoredAnimations.remove(key);
+                    }
+                });
         latestAnimationCountdown.start();
 
         CountDownTimer parallelAnimationCountdown = monitoredAnimations.get(key);
@@ -60,5 +63,21 @@ class AnimationTracker {
 
     public void resetCount(String key) {
         animationCounter.resetCount(key);
+    }
+
+    public void saveDuration(long duration, String key) {
+        animationCounter.saveDuration(duration, key);
+    }
+
+    public long getCurrentDuration(String key, Act act) {
+        if (viewingForFirstTime(key)) {
+            return act.getDuration();
+        } else {
+            return animationCounter.getDuration(key);
+        }
+    }
+
+    private boolean viewingForFirstTime(String key) {
+        return getCount(key) <= 1;
     }
 }

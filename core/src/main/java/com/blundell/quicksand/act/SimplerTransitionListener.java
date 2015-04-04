@@ -3,7 +3,7 @@ package com.blundell.quicksand.act;
 import android.transition.Transition;
 
 /**
- * A simpler listener that only enforces to override start
+ * A simpler listener that only enforces to override what we need
  */
 abstract class SimplerTransitionListener implements Transition.TransitionListener {
     @Override
@@ -25,7 +25,5 @@ abstract class SimplerTransitionListener implements Transition.TransitionListene
     }
 
     @Override
-    public void onTransitionEnd(Transition transition) {
-        // not-used
-    }
+    public abstract void onTransitionEnd(Transition transition);
 }

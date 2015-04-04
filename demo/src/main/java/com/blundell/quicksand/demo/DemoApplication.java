@@ -19,7 +19,7 @@ public class DemoApplication extends Application {
         super.onCreate();
         Log.setShowLogs(true);
         Map<String, Viscosity> viscosities = new HashMap<>();
-        viscosities.put(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION, LinearChangeViscosity.defaultInstance());
+        viscosities.put(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION, new LinearChangeViscosity(30));
         viscosities.put(ViewAnimateActivity.KEY_ANIM_SHOW_HIDE, LinearChangeViscosity.defaultInstance());
 
         Quicksand.create(this, viscosities);

@@ -21,13 +21,20 @@ class AnimationAct implements Act {
     }
 
     @Override
-    public void addListener(final StartListener startListener) {
+    public void addListener(final StartListener listener) {
         animator.withStartAction(
                 new Runnable() {
                     @Override
                     public void run() {
-                        startListener.onStart(AnimationAct.this);
+                        listener.onStart(AnimationAct.this);
                     }
-                });
+                })
+                .withEndAction(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                listener.onFinish(AnimationAct.this);
+                            }
+                        });
     }
 }

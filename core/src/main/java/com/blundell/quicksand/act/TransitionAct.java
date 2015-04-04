@@ -21,12 +21,17 @@ class TransitionAct implements Act {
     }
 
     @Override
-    public void addListener(final StartListener startListener) {
+    public void addListener(final StartListener listener) {
         transition.addListener(
                 new SimplerTransitionListener() {
                     @Override
                     public void onTransitionStart(Transition transition) {
-                        startListener.onStart(TransitionAct.this);
+                        listener.onStart(TransitionAct.this);
+                    }
+
+                    @Override
+                    public void onTransitionEnd(Transition transition) {
+                        listener.onFinish(TransitionAct.this);
                     }
                 });
     }
