@@ -9,7 +9,7 @@ class ActManipulator {
     private final DurationCalculator durationCalculator;
     private final ViscosityCollection viscosityCollection;
 
-    private boolean onFinishDecrement;
+    private boolean onFinishUpdate;
 
     ActManipulator(AnimationTracker animationTracker, DurationCalculator durationCalculator, ViscosityCollection viscosityCollection) {
         this.animationTracker = animationTracker;
@@ -22,11 +22,11 @@ class ActManipulator {
      * - once everytime the act is created (before starting); therefore we need to maintain current duration ourselves external to act
      * - once only when act is created; therefore we need to increment the duration on act finish ready for next time
      * <p/>
-     * onFinishDecrement means first time manipulate is called it will skip the setDuration in onFinish
+     * onFinishUpdate means first time manipulate() is called it will skip the setDuration in onFinish
      */
     public void manipulate(final String key, Act act) {
-        setDuration(key, act);
-        onFinishDecrement = false;
+        updateDuration(key, act);
+        onFinishUpdate = false;
         act.addListener(
                 new Act.StartListener() {
                     @Override
@@ -38,22 +38,26 @@ class ActManipulator {
 
                     @Override
                     public void onFinish(Act act) {
-                        if (onFinishDecrement) {
-                            setDuration(key, act);
+                        if (onFinishUpdate) {
+                            updateDuration(key, act);
                         }
-                        onFinishDecrement = true;
+                        onFinishUpdate = true;
                     }
                 }
         );
     }
 
-    private void setDuration(String key, Act act) {
-        long timesTransitionViewed = animationTracker.getCount(key);
+    private void updateDuration(String key, Act act) {
+        long duration = getNewDuration(key, act);
+        act.setDuration(duration);
+        animationTracker.saveDuration(duration, key);
+    }
+
+    private long getNewDuration(String key, Act act) {
+        long viewCount = animationTracker.getCount(key);
         Viscosity viscosity = viscosityCollection.getFor(key);
         long currentDuration = animationTracker.getCurrentDuration(key, act);
-        long transitionDuration = durationCalculator.calculateNewDuration(timesTransitionViewed, viscosity, currentDuration);
-        act.setDuration(transitionDuration);
-        animationTracker.saveDuration(transitionDuration, key);
+        return durationCalculator.calculateNewDuration(viewCount, viscosity, currentDuration);
     }
 
     public void resetTransition(String key) {
