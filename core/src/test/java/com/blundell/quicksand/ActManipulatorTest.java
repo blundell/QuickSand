@@ -19,7 +19,7 @@ public class ActManipulatorTest {
 
         manipulator.resetTransition(expectedKey);
 
-        verify(mockAnimationTracker).resetCount(expectedKey);
+        verify(mockAnimationTracker).reset(expectedKey);
     }
 
 }

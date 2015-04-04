@@ -9,18 +9,20 @@ class ActManipulator {
     private final DurationCalculator durationCalculator;
     private final ViscosityCollection viscosityCollection;
 
+    private boolean onFinishDecrement;
+
     ActManipulator(AnimationTracker animationTracker, DurationCalculator durationCalculator, ViscosityCollection viscosityCollection) {
         this.animationTracker = animationTracker;
         this.durationCalculator = durationCalculator;
         this.viscosityCollection = viscosityCollection;
     }
 
-    boolean onFinishDecrement = true;
-
     /**
      * Called in two potential scenarios:
      * - once everytime the act is created (before starting); therefore we need to maintain current duration ourselves external to act
      * - once only when act is created; therefore we need to increment the duration on act finish ready for next time
+     * <p/>
+     * onFinishDecrement means first time manipulate is called it will skip the setDuration in onFinish
      */
     public void manipulate(final String key, Act act) {
         setDuration(key, act);
@@ -41,7 +43,8 @@ class ActManipulator {
                         }
                         onFinishDecrement = true;
                     }
-                });
+                }
+        );
     }
 
     private void setDuration(String key, Act act) {
@@ -54,6 +57,6 @@ class ActManipulator {
     }
 
     public void resetTransition(String key) {
-        animationTracker.resetCount(key);
+        animationTracker.reset(key);
     }
 }

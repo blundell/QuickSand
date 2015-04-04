@@ -61,8 +61,8 @@ class AnimationTracker {
         return animationCounter.getCount(key);
     }
 
-    public void resetCount(String key) {
-        animationCounter.resetCount(key);
+    public void reset(String key) {
+        animationCounter.reset(key);
     }
 
     public void saveDuration(long duration, String key) {

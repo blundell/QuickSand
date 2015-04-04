@@ -77,8 +77,8 @@ public class AnimationTrackerTest {
     @Test
     public void whenResetCountThenDelegatesToCounter() throws Exception {
         String expectedKey = "TestKey";
-        tracker.resetCount(expectedKey);
+        tracker.reset(expectedKey);
 
-        verify(mockCounter).resetCount(expectedKey);
+        verify(mockCounter).reset(expectedKey);
     }
 }

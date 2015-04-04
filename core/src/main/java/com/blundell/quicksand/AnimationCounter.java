@@ -35,9 +35,10 @@ class AnimationCounter {
         return String.format(Locale.UK, KEY_COUNT, key);
     }
 
-    public void resetCount(String key) {
+    public void reset(String key) {
         sharedPreferences.edit()
                 .remove(getCountKey(key))
+                .remove(getDurationKey(key))
                 .apply();
     }
 
