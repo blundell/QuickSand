@@ -11,7 +11,7 @@ import com.blundell.quicksand.demo.R;
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
-public class MainFragment extends android.app.Fragment {
+public class AmazeAnimationFragment extends android.app.Fragment {
 
     private ImageView carImage;
     private View resetButton;

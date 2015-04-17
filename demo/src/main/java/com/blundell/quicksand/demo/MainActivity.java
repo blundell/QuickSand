@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
-import com.blundell.quicksand.demo.amazeanimation.MainFragment;
+import com.blundell.quicksand.demo.amazeanimation.AmazeAnimationFragment;
 import com.blundell.quicksand.demo.simpleanimation.SimpleAnimationActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
         if (position == 0) {
             getFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container, new MainFragment())
+                    .replace(R.id.container, new AmazeAnimationFragment())
                     .commit();
         } else if (position == 1) {
             Intent intent = new Intent(this, FromHereActivity.class);
