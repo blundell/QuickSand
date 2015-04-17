@@ -12,44 +12,29 @@ import android.widget.LinearLayout;
 
 import com.blundell.quicksand.Quicksand;
 
+import java.util.concurrent.TimeUnit;
+
 /**
- * This animation creates a bitmap of the view, divides them into customizable
- * number of X and Y parts and translates the parts away from the center of the
- * view to mimic an explosion. The number of parts can vary from 1x2 to 3x3. The
- * view is set to invisible and added back for reuse.
- *
- * @author SiYao
+ * original author SiYao of https://github.com/2359media/EasyAndroidAnimations
+ * <p/>
+ * It doesn't matter what this animation is or how it works. This is just an example of a complex animation.
+ * See the {@link #monitor(ImageView[])}} method for how you integrate with Quicksand.
  */
 public class ExplodeAnimation {
 
-    // constants
-    public static final int DIRECTION_LEFT = 1;
-    public static final int DIRECTION_RIGHT = 2;
-    public static final int DIRECTION_UP = 3;
-    public static final int DIRECTION_DOWN = 4;
+    private static final int MATRIX_3X3 = 33;
+    private static final long DURATION_LONG = TimeUnit.SECONDS.toMillis(2);
+    private static final String KEY_ANIMATION_SET = "NewKey";
 
-    public static final int DURATION_DEFAULT = 500; // 500 ms
-    public static final int DURATION_SHORT = 100;    // 100 ms
-    public static final int DURATION_LONG = 1500;    // 1500 ms
+    private final View view;
 
-    View view;
+    private int xParts;
+    private int yParts;
 
-    public final static int MATRIX_1X2 = 12;
-    public final static int MATRIX_1X3 = 13;
-    public final static int MATRIX_2X1 = 21;
-    public final static int MATRIX_2X2 = 22;
-    public final static int MATRIX_2X3 = 23;
-    public final static int MATRIX_3X1 = 31;
-    public final static int MATRIX_3X2 = 32;
-    public final static int MATRIX_3X3 = 33;
-
-    private int xParts, yParts;
-
-    ViewGroup parentView;
-    int matrix;
-    TimeInterpolator interpolator;
-    long duration;
-    AnimationListener listener;
+    private ViewGroup parentView;
+    private TimeInterpolator interpolator;
+    private long duration;
+    private AnimationListener listener;
 
     public interface AnimationListener {
 
@@ -58,7 +43,7 @@ public class ExplodeAnimation {
          *
          * @param animation The Animation object.
          */
-        public void onAnimationEnd(ExplodeAnimation animation);
+        void onAnimationEnd(ExplodeAnimation animation);
     }
 
     /**
@@ -70,7 +55,7 @@ public class ExplodeAnimation {
      *
      * @param view The view to be animated.
      */
-    public ExplodeAnimation(View view) {
+    ExplodeAnimation(View view) {
         this.view = view;
         setExplodeMatrix(MATRIX_3X3);
         interpolator = new AccelerateDecelerateInterpolator();
@@ -90,7 +75,7 @@ public class ExplodeAnimation {
         Bitmap viewBmp = view.getDrawingCache(true);
         int totalParts = xParts * yParts, bmpWidth = viewBmp.getWidth()
                 / xParts, bmpHeight = viewBmp.getHeight() / yParts, widthCount = 0, heightCount = 0, middleXPart = (xParts - 1) / 2;
-        int[] translation = new int[2];
+        int[] translation;
         ImageView[] imageViews = new ImageView[totalParts];
 
         for (int i = 0; i < totalParts; i++) {
@@ -104,13 +89,13 @@ public class ExplodeAnimation {
                 layouts[heightCount].setClipChildren(false);
                 translation = sideTranslation(
                         heightCount, bmpWidth, bmpHeight,
-                        xParts, yParts);
+                        yParts);
                 translateX = translation[0];
                 translateY = translation[1];
             } else if (i % xParts == xParts - 1) {
                 translation = sideTranslation(
                         heightCount, -bmpWidth,
-                        bmpHeight, xParts, yParts);
+                        bmpHeight, yParts);
                 translateX = translation[0];
                 translateY = translation[1];
             } else {
@@ -129,7 +114,7 @@ public class ExplodeAnimation {
             if (xParts == 1) {
                 translation = sideTranslation(
                         heightCount, 0, bmpHeight,
-                        xParts, yParts);
+                        yParts);
                 translateX = translation[0];
                 translateY = translation[1];
             }
@@ -149,7 +134,7 @@ public class ExplodeAnimation {
             widthCount++;
         }
 
-        Quicksand.trap("NewKey", imageViews);
+        monitor(imageViews);
 
         for (int i = 0; i < yParts; i++) {
             explodeLayout.addView(layouts[i]);
@@ -182,8 +167,26 @@ public class ExplodeAnimation {
                 });
     }
 
-    private int[] sideTranslation(int heightCount, int bmpWidth, int bmpHeight,
-                                  int xParts, int yParts) {
+    /**
+     * This is the line of interest below. It doesn't matter how you create your animation
+     * as long as those views which want to be animated are added to Quicksand as a set.
+     * <p/>
+     * vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+     * vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+     * vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+     * vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+     * vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+     * vvvvvvvvvvvvvvvvvvvv
+     * vvvvvvvvvv
+     * vvvv
+     * vv
+     * v
+     */
+    private void monitor(ImageView[] imageViews) {
+        Quicksand.trap(KEY_ANIMATION_SET, imageViews);
+    }
+
+    private int[] sideTranslation(int heightCount, int bmpWidth, int bmpHeight, int yParts) {
         int[] translation = new int[2];
         int middleYPart = (yParts - 1) / 2;
         if (heightCount == 0) {
@@ -204,67 +207,17 @@ public class ExplodeAnimation {
     }
 
     /**
-     * The available matrices are <code>MATRIX_1X2</code>,
-     * <code>MATRIX_1X3</code>, <code>MATRIX_2X1</code>, <code>MATRIX_2X2</code>
-     * , <code>MATRIX_2X3</code>, <code>MATRIX_3X1</code>,
-     * <code>MATRIX_3X2</code> and <code>MATRIX_3X3</code>.
-     *
-     * @return The matrix that determines the number of X and Y parts.
-     */
-    public int getExplodeMatrix() {
-        return matrix;
-    }
-
-    /**
-     * The available matrices are <code>MATRIX_1X2</code>,
-     * <code>MATRIX_1X3</code>, <code>MATRIX_2X1</code>, <code>MATRIX_2X2</code>
-     * , <code>MATRIX_2X3</code>, <code>MATRIX_3X1</code>,
-     * <code>MATRIX_3X2</code> and <code>MATRIX_3X3</code>.
-     *
      * @param matrix The matrix that determines the number of X and Y parts to set.
      * @return This object, allowing calls to methods in this class to be
      * chained.
      */
-    public ExplodeAnimation setExplodeMatrix(int matrix) {
-        this.matrix = matrix;
+    private ExplodeAnimation setExplodeMatrix(int matrix) {
         xParts = matrix / 10;
         yParts = matrix % 10;
         return this;
     }
 
-//    /**
-//     * @return The interpolator of the entire animation.
-//     */
-//    public TimeInterpolator getInterpolator() {
-//        return interpolator;
-//    }
-//
-//    /**
-//     * @param interpolator The interpolator of the entire animation to set.
-//     */
-//    public ExplodeAnimation setInterpolator(TimeInterpolator interpolator) {
-//        this.interpolator = interpolator;
-//        return this;
-//    }
-
-    /**
-     * @return The duration of the entire animation.
-     */
-    public long getDuration() {
-        return duration;
-    }
-
-    /**
-     * @param duration The duration of the entire animation to set.
-     */
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
-    /**
-     * @return The listener for the end of the animation.
-     */
-    public AnimationListener getListener() {
+    private AnimationListener getListener() {
         return listener;
     }
 
