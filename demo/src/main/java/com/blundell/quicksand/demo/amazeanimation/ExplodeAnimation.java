@@ -22,9 +22,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class ExplodeAnimation {
 
+    public static final String KEY_ANIMATION_SET = "NewKey";
+
     private static final int MATRIX_3X3 = 33;
     private static final long DURATION_LONG = TimeUnit.SECONDS.toMillis(2);
-    private static final String KEY_ANIMATION_SET = "NewKey";
 
     private final View view;
 
