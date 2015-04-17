@@ -1,5 +1,6 @@
 package com.blundell.quicksand;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -10,10 +11,17 @@ public class ActManipulatorTest {
 
     @Mock
     private AnimationTracker mockAnimationTracker;
+    @Mock
+    private DurationCalculator mockDurationCalculator;
+    private ActManipulator manipulator;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
-    public void whenResetTransitionIsCalledThenWeDelegateToThe() throws Exception {
-        MockitoAnnotations.initMocks(this);
+    public void whenResetTransitionIsCalledThenWeDelegateToTheAnimationTracker() throws Exception {
         ActManipulator manipulator = new ActManipulator(mockAnimationTracker, null, null);
         String expectedKey = "ExpectedKey";
 
@@ -21,5 +29,4 @@ public class ActManipulatorTest {
 
         verify(mockAnimationTracker).reset(expectedKey);
     }
-
 }

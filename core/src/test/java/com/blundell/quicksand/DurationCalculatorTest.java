@@ -27,7 +27,7 @@ public class DurationCalculatorTest {
     public void givenActHasDurationZeroWhenDurationCalculatedThenCalculatedDurationIsZero() throws Exception {
         long currentDuration = 0L;
 
-        long duration = calc.calculateNewDuration(0, mockViscosity, currentDuration);
+        long duration = calc.calculateNewDuration(mockViscosity, 0, currentDuration);
 
         assertThat(duration).isEqualTo(0L);
     }
@@ -36,7 +36,7 @@ public class DurationCalculatorTest {
     public void givenActViewedForFirstTimeWhenDurationCalculatedThenCalculatedDurationIsCurrentDuration() throws Exception {
         long currentDuration = 50L;
 
-        long duration = calc.calculateNewDuration(0, mockViscosity, currentDuration);
+        long duration = calc.calculateNewDuration(mockViscosity, 0, currentDuration);
 
         assertThat(duration).isEqualTo(currentDuration);
     }
@@ -46,7 +46,7 @@ public class DurationCalculatorTest {
         int timesTransitionViewed = 1;
         long currentDuration = 50L;
 
-        calc.calculateNewDuration(timesTransitionViewed, mockViscosity, currentDuration);
+        calc.calculateNewDuration(mockViscosity, timesTransitionViewed, currentDuration);
 
         verify(mockViscosity).calculateDuration(currentDuration, timesTransitionViewed);
     }

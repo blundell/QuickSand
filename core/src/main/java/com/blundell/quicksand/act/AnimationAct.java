@@ -4,10 +4,31 @@ import android.view.ViewPropertyAnimator;
 
 class AnimationAct implements Act {
 
-    final ViewPropertyAnimator animator;
+    private final ViewPropertyAnimator animator;
+    private final int id;
+    private final boolean first;
+    private final boolean last;
 
-    public AnimationAct(ViewPropertyAnimator animator) {
+    public AnimationAct(ViewPropertyAnimator animator, int id, boolean first, boolean last) {
         this.animator = animator;
+        this.id = id;
+        this.first = first;
+        this.last = last;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public boolean isFirst() {
+        return first;
+    }
+
+    @Override
+    public boolean isLast() {
+        return last;
     }
 
     @Override

@@ -31,7 +31,7 @@ class AnimationTracker {
      * @param duration how long this animation (key) will run for
      * @return true if this is the first animation in a set of animations
      */
-    public boolean isTheStartOfANewAnimation(final String key, long duration) {
+    public boolean isTheStartOfANewAnimationSet(final String key, long duration) {
         CountDownTimer latestAnimationCountdown = timerFactory.getTimer(
                 duration, new Runnable() {
                     @Override
@@ -66,18 +66,11 @@ class AnimationTracker {
     }
 
     public void saveDuration(String key, long duration) {
-        animationCounter.saveDuration(duration, key);
+        animationCounter.saveDuration(key, duration);
     }
 
     public long getCurrentDuration(String key, Act act) {
-        if (viewingForFirstTime(key)) {
-            return act.getDuration();
-        } else {
-            return animationCounter.getDuration(key);
-        }
-    }
-
-    private boolean viewingForFirstTime(String key) {
-        return getCount(key) <= 1;
+        long storedDuration = animationCounter.getDuration(key);
+        return storedDuration == 0 ? act.getDuration() : storedDuration;
     }
 }

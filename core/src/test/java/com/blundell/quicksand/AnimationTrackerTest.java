@@ -34,7 +34,7 @@ public class AnimationTrackerTest {
 
     @Test
     public void givenAnAnimationIsNotPartOfASetWhenWeAskThenItSaysItsANewAnimation() throws Exception {
-        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimation("TestKey", ANY_DURATION);
+        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimationSet("TestKey", ANY_DURATION);
 
         assertThat(startOfANewAnimation).isTrue();
     }
@@ -42,18 +42,18 @@ public class AnimationTrackerTest {
     @Test
     public void givenAnAnimationIsPartOfASetWhenWeAskThenThereItSaysItIsNotANewAnimation() throws Exception {
         String setKey = "TestKey";
-        tracker.isTheStartOfANewAnimation(setKey, ANY_DURATION);
+        tracker.isTheStartOfANewAnimationSet(setKey, ANY_DURATION);
 
-        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimation(setKey, ANY_DURATION);
+        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimationSet(setKey, ANY_DURATION);
 
         assertThat(startOfANewAnimation).isFalse();
     }
 
     @Test
     public void givenTwoAnimationsAreNotPartOfASetWhenWeAskThenThereIsTwoIncrements() throws Exception {
-        tracker.isTheStartOfANewAnimation("TestKey1", ANY_DURATION);
+        tracker.isTheStartOfANewAnimationSet("TestKey1", ANY_DURATION);
 
-        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimation("TestKey2", ANY_DURATION);
+        boolean startOfANewAnimation = tracker.isTheStartOfANewAnimationSet("TestKey2", ANY_DURATION);
 
         assertThat(startOfANewAnimation).isTrue();
     }

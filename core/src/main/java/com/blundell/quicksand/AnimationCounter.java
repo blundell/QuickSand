@@ -23,7 +23,7 @@ class AnimationCounter {
     }
 
     public long getCount(String key) {  // a getter? hmm
-        return sharedPreferences.getLong(getCountKey(key), 0L);
+        return sharedPreferences.getLong(getCountKey(key), 1L);
     }
 
     public void incrementCount(String key) {
@@ -36,14 +36,17 @@ class AnimationCounter {
     }
 
     public void reset(String key) {
+//        sharedPreferences.edit()
+//                .remove(getCountKey(key))
+//                .remove(getDurationKey(key))
+//                .apply();
         sharedPreferences.edit()
-                .remove(getCountKey(key))
-                .remove(getDurationKey(key))
+                .clear() // TODO LOLZ - bug, in that the duration key now has an id we do not know appended to the end
                 .apply();
     }
 
     public long getDuration(String key) {
-        return sharedPreferences.getLong(getDurationKey(key), 0);
+        return sharedPreferences.getLong(getDurationKey(key), 0L);
     }
 
     public void saveDuration(String key, long duration) {

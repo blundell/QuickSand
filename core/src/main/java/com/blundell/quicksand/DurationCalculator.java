@@ -5,7 +5,7 @@ import com.novoda.notils.logger.simple.Log;
 
 class DurationCalculator {
 
-    public long calculateNewDuration(long timesAnimationViewed, Viscosity viscosity, long currentDuration) {
+    public long calculateNewDuration(Viscosity viscosity, long timesAnimationViewed, long currentDuration) {
         if (currentDuration == 0) {
             Log.e("duration was zero");
             return 0;
