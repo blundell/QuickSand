@@ -76,10 +76,8 @@ public class ViewAnimateActivity extends Activity {
                                 });
                 Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
 
-                propertyAnimator
-                        .start();
-                viewPropertyAnimator
-                        .start();
+                propertyAnimator.start();
+                viewPropertyAnimator.start();
 
             } else {
                 ViewPropertyAnimator animator = animateButton
@@ -113,10 +111,8 @@ public class ViewAnimateActivity extends Activity {
                                 });
                 Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
 
-                animator
-                        .start();
-                viewPropertyAnimator
-                        .start();
+                animator.start();
+                viewPropertyAnimator.start();
 
             }
         }
