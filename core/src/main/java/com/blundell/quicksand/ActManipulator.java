@@ -50,7 +50,7 @@ class ActManipulator {
     private void updateDuration(String key, Act act) {
         long duration = getNewDuration(key, act);
         act.setDuration(duration);
-        animationTracker.saveDuration(duration, key);
+        animationTracker.saveDuration(key, duration);
     }
 
     private long getNewDuration(String key, Act act) {

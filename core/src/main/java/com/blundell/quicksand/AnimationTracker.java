@@ -65,7 +65,7 @@ class AnimationTracker {
         animationCounter.reset(key);
     }
 
-    public void saveDuration(long duration, String key) {
+    public void saveDuration(String key, long duration) {
         animationCounter.saveDuration(duration, key);
     }
 

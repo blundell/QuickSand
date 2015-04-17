@@ -46,7 +46,7 @@ class AnimationCounter {
         return sharedPreferences.getLong(getDurationKey(key), 0);
     }
 
-    public void saveDuration(long duration, String key) {
+    public void saveDuration(String key, long duration) {
         sharedPreferences.edit()
                 .putLong(getDurationKey(key), duration)
                 .apply();
