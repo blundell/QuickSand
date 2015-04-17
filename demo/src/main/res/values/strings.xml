@@ -9,7 +9,7 @@
   <string name="title_activity_main">QuickSand Demo</string>
   <string name="title_section1">Activity Transition</string>
   <string name="title_section2">Simple Button Animation</string>
-  <string name="title_section3">Section 3</string>
+  <string name="title_section3">Simple Entry Animation</string>
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
   <string name="action_example">Example action</string>
@@ -22,5 +22,8 @@
   <string name="home">Demo Home</string>
   <string name="main_image">car in quicksand</string>
   <string name="button_reset_all">reset all</string>
+  <string name="simple_anim_explanation_text">Each time you view this Activity it will animate the text at a differing speed until eventually it doesn't move.</string>
+  <string name="simple_anim_text">welcome</string>
+  <string name="title_activity_simple">Simple Anim</string>
 
 </resources>

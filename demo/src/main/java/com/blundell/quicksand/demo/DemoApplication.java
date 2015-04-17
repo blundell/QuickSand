@@ -5,6 +5,7 @@ import android.app.Application;
 import com.blundell.quicksand.Quicksand;
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
 import com.blundell.quicksand.demo.amazeanimation.ExplodeAnimation;
+import com.blundell.quicksand.demo.simpleanimation.SimpleAnimationActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 import com.blundell.quicksand.viscosity.LinearChangeViscosity;
 import com.blundell.quicksand.viscosity.Viscosity;
@@ -25,6 +26,7 @@ public class DemoApplication extends Application {
         viscosities.put(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION, LinearChangeViscosity.defaultInstance());
         viscosities.put(ViewAnimateActivity.KEY_ANIM_SHOW_HIDE, LinearChangeViscosity.defaultInstance());
         viscosities.put(ExplodeAnimation.KEY_ANIMATION_SET, LinearChangeViscosity.defaultInstance());
+        viscosities.put(SimpleAnimationActivity.KEY_SIMPLE_ANIMATE_TEXT, LinearChangeViscosity.defaultInstance());
 
         Quicksand.create(this, viscosities);
     }

@@ -25,6 +25,9 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity
+      android:name=".simpleanimation.SimpleAnimationActivity"
+      android:label="@string/title_activity_simple" />
   </application>
 
 </manifest>

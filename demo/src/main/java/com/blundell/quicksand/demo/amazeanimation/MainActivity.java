@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.blundell.quicksand.demo.NavigationDrawerFragment;
 import com.blundell.quicksand.demo.R;
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
+import com.blundell.quicksand.demo.simpleanimation.SimpleAnimationActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -41,8 +42,11 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
         } else if (position == 1) {
             Intent intent = new Intent(this, FromHereActivity.class);
             startActivity(intent);
-        } else {
+        } else if (position == 2) {
             Intent intent = new Intent(this, ViewAnimateActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, SimpleAnimationActivity.class);
             startActivity(intent);
         }
     }

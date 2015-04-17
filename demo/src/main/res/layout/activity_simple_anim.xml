@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/simple_anim_explanation_text"
+    android:textAppearance="?android:textAppearanceLarge" />
+
+  <TextView
+    android:id="@+id/simple_anim_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:text="@string/simple_anim_text"
+    android:textAppearance="?android:textAppearanceLarge" />
+
+</LinearLayout>
