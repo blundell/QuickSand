@@ -1,4 +1,4 @@
-package com.blundell.quicksand.demo.amazeanimation;
+package com.blundell.quicksand.demo;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -8,9 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.blundell.quicksand.demo.NavigationDrawerFragment;
-import com.blundell.quicksand.demo.R;
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
+import com.blundell.quicksand.demo.amazeanimation.MainFragment;
 import com.blundell.quicksand.demo.simpleanimation.SimpleAnimationActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 

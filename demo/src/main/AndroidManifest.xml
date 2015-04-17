@@ -17,7 +17,7 @@
       android:label="@string/title_activity_to_here" />
     <activity android:name=".viewanimation.ViewAnimateActivity" />
     <activity
-      android:name=".amazeanimation.MainActivity"
+      android:name=".MainActivity"
       android:label="@string/title_activity_main">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
