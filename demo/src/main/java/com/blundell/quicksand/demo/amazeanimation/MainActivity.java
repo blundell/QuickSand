@@ -1,4 +1,4 @@
-package com.blundell.quicksand.demo;
+package com.blundell.quicksand.demo.amazeanimation;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -8,6 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.blundell.quicksand.demo.NavigationDrawerFragment;
+import com.blundell.quicksand.demo.R;
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
@@ -32,7 +34,10 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         if (position == 0) {
-            // Home
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, new MainFragment())
+                    .commit();
         } else if (position == 1) {
             Intent intent = new Intent(this, FromHereActivity.class);
             startActivity(intent);

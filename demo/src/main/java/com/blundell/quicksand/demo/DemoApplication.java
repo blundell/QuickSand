@@ -18,8 +18,11 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Log.setShowLogs(true);
+
+        // Here we decide how we want each Animation's duration to degrade as it is viewed more and more
         Map<String, Viscosity> viscosities = new HashMap<>();
-        viscosities.put(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION, new LinearChangeViscosity(30));
+        viscosities.put("NewKey", LinearChangeViscosity.defaultInstance());
+        viscosities.put(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION, LinearChangeViscosity.defaultInstance());
         viscosities.put(ViewAnimateActivity.KEY_ANIM_SHOW_HIDE, LinearChangeViscosity.defaultInstance());
 
         Quicksand.create(this, viscosities);

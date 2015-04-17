@@ -6,7 +6,7 @@
   <string name="title_activity_to_here">ToHereActivity</string>
   <string name="hello_world">Hello world!</string>
   <string name="action_settings">Settings</string>
-  <string name="title_activity_main">MainActivity</string>
+  <string name="title_activity_main">QuickSand Demo</string>
   <string name="title_section1">Activity Transition</string>
   <string name="title_section2">Simple Button Animation</string>
   <string name="title_section3">Section 3</string>
@@ -20,5 +20,7 @@
   <string name="button_reset_animation_count">Reset animation views</string>
   <string name="notify_reset">reset</string>
   <string name="home">Demo Home</string>
+  <string name="main_image">car in quicksand</string>
+  <string name="button_reset_all">reset all</string>
 
 </resources>
