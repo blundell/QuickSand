@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.blundell.quicksand.Quicksand;
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
+import com.blundell.quicksand.demo.amazeanimation.ExplodeAnimation;
 import com.blundell.quicksand.demo.simpleanimation.SimpleAnimationActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
@@ -54,7 +55,7 @@ public class MainActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Quicksand.resetTrap("NewKey");
+                        Quicksand.resetTrap(ExplodeAnimation.KEY_ANIMATION_SET);
                         Quicksand.resetTrap(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION);
                         Quicksand.resetTrap(ViewAnimateActivity.KEY_ANIM_SHOW_HIDE);
                         Toast.makeText(MainActivity.this, R.string.message_reset_traps, Toast.LENGTH_SHORT).show();
