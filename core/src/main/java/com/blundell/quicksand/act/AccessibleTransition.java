@@ -27,8 +27,10 @@ class AccessibleTransition {
             Field animatorsField = Transition.class.getDeclaredField("mAnimators");
             animatorsField.setAccessible(true);
             animators.addAll((List<Animator>) animatorsField.get(transition));
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            Log.wtf(e, "Oops can't get the animators from the transition.");
+        } catch (NoSuchFieldException e) {
+            Log.wtf(e, "Oops can't get the animators from the transition, no such field.");
+        } catch (IllegalAccessException e) {
+            Log.wtf(e, "Oops can't get the animators from the transition, illegal access.");
         }
         return animators;
     }
