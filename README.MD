@@ -48,9 +48,12 @@ Adding to your project
 
 --------
 
-|See it to believe it|
+See it to believe it
+--------
+
+|15 second gif below|  
 |---|
-|This 20 second keeps pressing the image over and over to show an example of an animation speeding up over time (over the time the user has seen it).|
+|Example of touching the image over and over to show how the animation duration decreases over time (over the number of times the user has seen it not just from touch events).|
 |![demo](demo/demo_z1c.gif)|
 
 Download
