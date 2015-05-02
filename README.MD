@@ -34,9 +34,9 @@ Also works for multiple view animation:
 
 Some viscosities already defined:
 
-AllOrNothing - you can run your animation for X seconds X times and then 0 seconds after that
-LinearChange - speed up the animation each time it is viewed until X views
-TwoStep - run animation at X speed for X times then it will run at X/2
+- AllOrNothing - you can run your animation for X seconds X times and then 0 seconds after that
+- LinearChange - speed up the animation each time it is viewed until X views
+- TwoStep - run animation at X speed for X times then it will run at X/2
 
 See the demo project for more examples.
 
