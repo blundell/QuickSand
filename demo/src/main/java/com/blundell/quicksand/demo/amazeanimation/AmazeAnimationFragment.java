@@ -11,7 +11,6 @@ import com.blundell.quicksand.demo.R;
 public class AmazeAnimationFragment extends android.app.Fragment {
 
     private ImageView carImage;
-    private View resetButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -25,6 +24,7 @@ public class AmazeAnimationFragment extends android.app.Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         carImage.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="amaze_explain_interaction">Touch image, wait for animation to finish and do it again.\n
+    Overtime the animation transition duration is affected by the Quicksand viscosity.</string>
+</resources>

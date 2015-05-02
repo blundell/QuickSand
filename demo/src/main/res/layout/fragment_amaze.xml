@@ -2,7 +2,16 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:gravity="center"
+  android:orientation="vertical"
   android:padding="@dimen/padding_medium">
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_small"
+    android:text="@string/amaze_explain_interaction"
+    android:textAppearance="?android:attr/textAppearanceSmall"
+    android:textColor="@android:color/black" />
 
   <ImageView
     android:id="@+id/amaze_image"
