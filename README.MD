@@ -38,7 +38,7 @@ Some viscosities already defined [see the code here](https://github.com/blundell
 - LinearChange - speed up the animation each time it is viewed until X views
 - TwoStep - run animation at X speed for X times then it will run at X/2
 
-See the demo project for more examples.
+See the [demo project](https://github.com/blundell/QuickSand/tree/master/demo) for more examples.
 
 Adding to your project
 --------
