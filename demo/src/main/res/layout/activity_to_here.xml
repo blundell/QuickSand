@@ -16,16 +16,11 @@
     android:contentDescription="@string/content_desc_demo"
     android:src="@drawable/car_quicksand" />
 
-  <RatingBar
-    android:id="@+id/ratingBar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-
   <TextView
     android:id="@+id/textView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/lorem_to_here"
+    android:text="@string/to_transition_explanation"
     android:textAppearance="?android:attr/textAppearanceLarge" />
 
 

@@ -12,7 +12,7 @@
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/lorem_from_here" />
+    android:text="@string/from_transition_explanation" />
 
   <ImageView
     android:id="@+id/from_here_image"
@@ -24,12 +24,7 @@
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/lorem_from_here" />
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/click_for_more" />
+    android:text="@string/to_from_explanation" />
 
   <Button
     android:id="@+id/button_reset_transition_count"

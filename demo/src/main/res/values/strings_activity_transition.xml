@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="lorem_from_here">Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
-  <string name="lorem_to_here">Charmander Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmeleon Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
-  <string name="click_for_more">Touch the image for more.</string>
+  <string name="from_transition_explanation">Touch the image to watch an activity transition that is affected by Quicksand.</string>
+  <string name="to_transition_explanation">Now press back to watch an activity transition that is affected by Quicksand.</string>
+  <string name="to_from_explanation">Repeat to see the transition duration change over time, affect by the Viscosity set in DemoApplication.class.</string>
   <string name="transition_reset_count_button">Reset transition view count.</string>
 </resources>
