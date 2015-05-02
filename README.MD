@@ -59,7 +59,7 @@ See it to believe it
 Download
 --------
 
-// TODO
+Get the [1.0.0 MVP here](https://github.com/blundell/QuickSand/raw/master/releases/quicksand-1.0.0.aar)
 
 License
 -------
