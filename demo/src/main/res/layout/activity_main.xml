@@ -1,22 +1,36 @@
-<android.support.v4.widget.DrawerLayout
+<LinearLayout
   android:id="@+id/drawer_layout"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:gravity="center_horizontal"
+  android:orientation="vertical"
   tools:context="com.blundell.quicksand.MainActivity">
 
-  <FrameLayout
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-
   <fragment
-    android:id="@+id/navigation_drawer"
-    android:name="com.blundell.quicksand.demo.NavigationDrawerFragment"
-    android:layout_width="@dimen/navigation_drawer_width"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    tools:layout="@layout/fragment_navigation_drawer" />
+    android:id="@+id/fragment_main"
+    android:name="com.blundell.quicksand.demo.amazeanimation.AmazeAnimationFragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 
-</android.support.v4.widget.DrawerLayout>
+  <Button
+    android:id="@+id/button_main_transition_demo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/main_activity_activity_transition_button" />
+
+  <Button
+    android:id="@+id/button_main_simple_demo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/main_activity_simple_button" />
+
+  <Button
+    android:id="@+id/button_main_view_property_demo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/main_activity_multiview_button" />
+
+
+</LinearLayout>

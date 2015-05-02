@@ -1,0 +1,47 @@
+<LinearLayout
+  android:id="@+id/drawer_layout"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:baselineAligned="false"
+  android:orientation="horizontal"
+  tools:context="com.blundell.quicksand.MainActivity">
+
+  <fragment
+    android:id="@+id/fragment_main"
+    android:name="com.blundell.quicksand.demo.amazeanimation.AmazeAnimationFragment"
+    android:layout_width="0dip"
+    android:layout_height="match_parent"
+    android:layout_weight="75" />
+
+  <LinearLayout
+    android:layout_width="0dip"
+    android:layout_height="match_parent"
+    android:layout_weight="25"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_medium">
+
+    <Button
+      android:id="@+id/button_main_transition_demo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/main_activity_activity_transition_button" />
+
+    <Button
+      android:id="@+id/button_main_simple_demo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/main_activity_simple_button" />
+
+    <Button
+      android:id="@+id/button_main_view_property_demo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/main_activity_multiview_button" />
+
+  </LinearLayout>
+
+
+</LinearLayout>

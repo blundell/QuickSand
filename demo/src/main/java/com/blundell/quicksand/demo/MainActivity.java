@@ -1,17 +1,17 @@
 package com.blundell.quicksand.demo;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.Toast;
 
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
-import com.blundell.quicksand.demo.amazeanimation.AmazeAnimationFragment;
 import com.blundell.quicksand.demo.simpleanimation.SimpleAnimationActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
-public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends Activity {
 
     private CharSequence title;
 
@@ -20,36 +20,35 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        NavigationDrawerFragment navigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        title = getTitle();
+        findViewById(R.id.button_main_simple_demo).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, SimpleAnimationActivity.class);
+                        startActivity(intent);
+                    }
+                });
+        findViewById(R.id.button_main_view_property_demo).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, ViewAnimateActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
-        // Set up the drawer.
-        navigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
-    }
-
-    @Override
-    public void onNavigationDrawerItemSelected(int position) {
-        if (position == 0) {
-            getFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, new AmazeAnimationFragment())
-                    .commit();
-        } else if (position == 1) {
-            Intent intent = new Intent(this, FromHereActivity.class);
-            startActivity(intent);
-        } else if (position == 2) {
-            Intent intent = new Intent(this, ViewAnimateActivity.class);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(this, SimpleAnimationActivity.class);
-            startActivity(intent);
-        }
-    }
-
-    public void restoreActionBar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(title);
+        findViewById(R.id.button_main_transition_demo).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                            String message = getString(R.string.message_feature_unavailable_below_X, "Lollipop");
+                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent intent = new Intent(MainActivity.this, FromHereActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
     }
 }

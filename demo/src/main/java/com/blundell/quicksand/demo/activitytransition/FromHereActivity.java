@@ -1,8 +1,10 @@
 package com.blundell.quicksand.demo.activitytransition;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Transition;
@@ -14,6 +16,7 @@ import com.blundell.quicksand.demo.R;
 
 import java.util.concurrent.TimeUnit;
 
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class FromHereActivity extends Activity {
 
     public static final String KEY_MY_ACTIVITY_TRANSITION = "MyActivityTransition";
