@@ -32,7 +32,7 @@ Also works for multiple view animation:
  myThirdView.animate().alpha();
 ```
 
-Some viscosities already defined:
+Some viscosities already defined [see the code here](https://github.com/blundell/QuickSand/tree/master/core/src/main/java/com/blundell/quicksand/viscosity):
 
 - AllOrNothing - you can run your animation for X seconds X times and then 0 seconds after that
 - LinearChange - speed up the animation each time it is viewed until X views
