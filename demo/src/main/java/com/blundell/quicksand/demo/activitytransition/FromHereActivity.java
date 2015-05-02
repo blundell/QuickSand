@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Transition;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.blundell.quicksand.Quicksand;
 import com.blundell.quicksand.demo.R;
+import com.blundell.quicksand.demo.UnimportantForDemoUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +31,8 @@ public class FromHereActivity extends Activity {
         getWindow().setExitTransition(transition);
         setContentView(R.layout.activity_from_here);
 
-        findViewById(R.id.from_here_image).setOnClickListener(
+        final ImageView carImage = (ImageView) findViewById(R.id.from_here_image);
+        carImage.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -38,6 +41,7 @@ public class FromHereActivity extends Activity {
                         startActivity(intent, bundle);
                     }
                 });
+        UnimportantForDemoUtils.addTouchFeedback(carImage);
 
         findViewById(R.id.button_reset_transition_count).setOnClickListener(
                 new View.OnClickListener() {

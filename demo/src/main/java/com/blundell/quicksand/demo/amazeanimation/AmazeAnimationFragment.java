@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.blundell.quicksand.demo.R;
+import com.blundell.quicksand.demo.UnimportantForDemoUtils;
 
 public class AmazeAnimationFragment extends android.app.Fragment {
 
@@ -40,5 +41,6 @@ public class AmazeAnimationFragment extends android.app.Fragment {
                                 });
                     }
                 });
+        UnimportantForDemoUtils.addTouchFeedback(carImage);
     }
 }
