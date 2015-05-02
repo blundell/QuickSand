@@ -45,11 +45,13 @@ Adding to your project
 
 // TODO
 
-See it to believe it
+
 --------
 
-This 20 second keeps pressing the image over and over to show an example of an animation speeding up over time (over the time the user has seen it).
-![demo](demo/demo_z1c.gif)
+|See it to believe it|
+|---|
+|This 20 second keeps pressing the image over and over to show an example of an animation speeding up over time (over the time the user has seen it).|
+|![demo](demo/demo_z1c.gif)|
 
 Download
 --------
