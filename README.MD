@@ -1,11 +1,10 @@
 QuickSand
 =========
 
-Ever wanted to show a really cool explanatory animation to your users when they click or do something for the first time?
-But you know that after a while it'll get tedious and would stop users wanting to use your app.
+When you want to show a really enchanting explanatory animation to your users when they click or do something for the first time, but you know that after a while it'll get tedious and would stop users wanting to use your app.
 QuickSand is here to solve that problem.
 
-You can manipulate the duration of your animation depending on how many times the user has viewed it.
+Automatically manipulates the duration of animations depending on how many times the user has viewed them.
 
 Simple Use
 ----------
