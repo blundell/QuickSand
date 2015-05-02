@@ -9,11 +9,17 @@ Automatically manipulates the duration of animations depending on how many times
 Simple Use
 ----------
 
+This is the setup needed to define how you change the animation duration between views:
+
 ```java
 Map<String, Viscosity> modifiers = new HashMap<>();
 modifiers.put("MyAnimationSetKey", TwoStepViscosity.defaultInstance());
 Quicksand.create(this, modifiers);
+```
 
+This is you "trapping" your animation, meaning when this view is animated Quicksand will determine how many times it as been viewed and vary the animation duration accordingly: 
+
+```java 
 View myView = findViewById(R.id.my_view);
 QuickSand.trap("MyAnimationSetKey", myView);
 myView.animate().alpha();
