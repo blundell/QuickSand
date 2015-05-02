@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -45,7 +44,7 @@ public class ViewAnimateActivity extends Activity {
         public void onClick(View v) {
             if (clickedShow()) {
 
-                ViewPropertyAnimator propertyAnimator = animateButton
+                animateButton
                         .animate()
                         .alpha(0F)
                         .setDuration(500L)
@@ -58,12 +57,11 @@ public class ViewAnimateActivity extends Activity {
                                         animateButton
                                                 .animate()
                                                 .alpha(1F)
-                                                .setDuration(500L)
-                                                .start();
+                                                .setDuration(500L);
                                     }
                                 });
 
-                ViewPropertyAnimator viewPropertyAnimator = sandImage
+                sandImage
                         .animate()
                         .alpha(1F)
                         .setDuration(500L)
@@ -76,11 +74,8 @@ public class ViewAnimateActivity extends Activity {
                                 });
                 Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
 
-                propertyAnimator.start();
-                viewPropertyAnimator.start();
-
             } else {
-                ViewPropertyAnimator animator = animateButton
+                animateButton
                         .animate()
                         .alpha(0F)
                         .translationYBy(-sandImage.getHeight())
@@ -93,12 +88,11 @@ public class ViewAnimateActivity extends Activity {
                                         animateButton
                                                 .animate()
                                                 .alpha(1F)
-                                                .setDuration(500L)
-                                                .start();
+                                                .setDuration(500L);
                                     }
                                 });
 
-                ViewPropertyAnimator viewPropertyAnimator = sandImage
+                sandImage
                         .animate()
                         .alpha(0F)
                         .setDuration(500L)
@@ -110,10 +104,6 @@ public class ViewAnimateActivity extends Activity {
                                     }
                                 });
                 Quicksand.trap(KEY_ANIM_SHOW_HIDE, animateButton, sandImage);
-
-                animator.start();
-                viewPropertyAnimator.start();
-
             }
         }
 

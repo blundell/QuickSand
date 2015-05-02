@@ -21,6 +21,5 @@ public class SimpleAnimationActivity extends Activity {
                 .setDuration(5000)
                 .scaleXBy(.5f);
         Quicksand.trap(KEY_SIMPLE_ANIMATE_TEXT, animateText);
-        animateText.start();
     }
 }
