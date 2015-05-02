@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.blundell.quicksand.Quicksand;
 import com.blundell.quicksand.demo.R;
@@ -27,16 +26,6 @@ public class ViewAnimateActivity extends Activity {
         animateButton = (Button) findViewById(R.id.button_animate);
         sandImage = (ImageView) findViewById(R.id.image_animate);
         animateButton.setOnClickListener(onClickAnimateButton);
-
-        findViewById(R.id.button_reset_animation_count).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Quicksand.resetTrap(KEY_ANIM_SHOW_HIDE);
-                        Toast.makeText(ViewAnimateActivity.this, R.string.message_reset_trap, Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                });
     }
 
     private final View.OnClickListener onClickAnimateButton = new View.OnClickListener() {

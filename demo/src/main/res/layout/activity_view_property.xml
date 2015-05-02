@@ -18,10 +18,4 @@
     android:src="@drawable/car_quicksand"
     android:visibility="invisible" />
 
-  <Button
-    android:id="@+id/button_reset_animation_count"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/view_property_reset_count_button" />
-
 </LinearLayout>
