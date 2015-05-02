@@ -18,10 +18,10 @@ public class AmazeAnimationFragment extends android.app.Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_main, container, false);
+        View root = inflater.inflate(R.layout.fragment_amaze, container, false);
 
-        carImage = (ImageView) root.findViewById(R.id.main_image);
-        resetButton = root.findViewById(R.id.main_reset_button);
+        carImage = (ImageView) root.findViewById(R.id.amaze_image);
+        resetButton = root.findViewById(R.id.amaze_reset_button);
 
         return root;
     }

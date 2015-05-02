@@ -7,14 +7,14 @@
   android:paddingTop="@dimen/activity_vertical_margin">
 
   <ImageView
-    android:id="@+id/main_image"
+    android:id="@+id/amaze_image"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:contentDescription="@string/main_image"
     android:src="@drawable/car_quicksand" />
 
   <Button
-    android:id="@+id/main_reset_button"
+    android:id="@+id/amaze_reset_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/button_reset_all" />
