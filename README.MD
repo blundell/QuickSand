@@ -42,7 +42,11 @@ See the [demo project](https://github.com/blundell/QuickSand/tree/master/demo) f
 Adding to your project
 --------
 
-// TODO
+```groovy
+dependencies {
+    compile 'com.blundell:quicksand:1.0.0'
+}
+```
 
 
 --------
