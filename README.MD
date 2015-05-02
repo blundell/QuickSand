@@ -34,9 +34,9 @@ Also works for multiple view animation:
 
 Some viscosities already defined:
 
-AllOrNothing - you can run your animation for X seconds X times and then 0 seconds after that
-LinearChange - speed up the animation each time it is viewed until X views
-TwoStep - run animation at X speed for X times then it will run at X/2
+- AllOrNothing - you can run your animation for X seconds X times and then 0 seconds after that
+- LinearChange - speed up the animation each time it is viewed until X views
+- TwoStep - run animation at X speed for X times then it will run at X/2
 
 See the demo project for more examples.
 
@@ -44,6 +44,12 @@ Adding to your project
 --------
 
 // TODO
+
+See it to believe it
+--------
+
+This 20 second keeps pressing the image over and over to show an example of an animation speeding up over time (over the time the user has seen it).
+![demo](demo/demo_z1c.gif)
 
 Download
 --------
