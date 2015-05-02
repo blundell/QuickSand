@@ -53,7 +53,7 @@ See it to believe it
 
 |15 second gif below|  
 |---|
-|Example of touching the image over and over to show how the animation duration decreases over time (over the number of times the user has seen it not just from touch events).|
+|Example of touching the image over and over to show how the animation duration decreases over time (*over the number of times the user has seen it not just from touch events*).|
 |![demo](demo/demo_z1c.gif)|
 
 Download
