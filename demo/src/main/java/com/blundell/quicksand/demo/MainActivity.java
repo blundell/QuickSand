@@ -14,8 +14,6 @@ import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
 public class MainActivity extends Activity {
 
-    private CharSequence title;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
