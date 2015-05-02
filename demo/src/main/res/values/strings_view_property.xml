@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="view_property_show_button">Show</string>
+  <string name="view_property_hide_button">Hide</string>
+  <string name="view_property_reset_count_button">Reset animation view count</string>
+</resources>

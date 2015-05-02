@@ -2,24 +2,17 @@
 <resources>
 
   <string name="app_name">Quicksand Demo</string>
-  <string name="title_activity_from_here">FromHereActivity</string>
-  <string name="title_activity_to_here">ToHereActivity</string>
+
   <string name="title_activity_main">QuickSand Demo</string>
-  <string name="content_demo">only a demo</string>
-  <string name="button_reset_transition_count">Reset transition views</string>
-  <string name="button_animate_me_show">Show</string>
-  <string name="button_animate_me_hide">Hide</string>
-  <string name="button_reset_animation_count">Reset animation views</string>
-  <string name="notify_reset">reset</string>
-  <string name="home">Demo Home</string>
-  <string name="main_image">car in quicksand</string>
-  <string name="button_reset_all">reset all</string>
-  <string name="simple_anim_explanation_text">Each time you view this Activity it will animate the text at a differing speed until eventually it doesn\'t move.</string>
-  <string name="simple_anim_text">welcome</string>
-  <string name="title_activity_simple">Simple Animation</string>
-  <string name="main_activity_activity_transition_button">Activity Transition</string>
-  <string name="main_activity_simple_button">Simple Animation</string>
-  <string name="main_activity_multiview_button">MultiView Animation</string>
-  <string name="message_feature_unavailable_below_X">Feature unavailable below %s</string>
+  <string name="title_activity_from_here">Transition Demo</string>
+  <string name="title_activity_to_here">Transition Demo</string>
+  <string name="title_activity_simple">Simple Animation Demo</string>
+  <string name="title_activity_view_property">ViewProperty Demo</string>
+
+  <string name="content_desc_demo">only a demo</string>
+
+  <string name="message_feature_unavailable_below_X">Feature unavailable below %s.</string>
+  <string name="message_reset_traps">All animation traps reset.</string>
+  <string name="message_reset_trap">Reset trap.</string>
 
 </resources>

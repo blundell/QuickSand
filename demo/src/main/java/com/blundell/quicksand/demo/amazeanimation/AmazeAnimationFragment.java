@@ -6,10 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.blundell.quicksand.Quicksand;
 import com.blundell.quicksand.demo.R;
-import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
-import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
 
 public class AmazeAnimationFragment extends android.app.Fragment {
 
@@ -21,7 +18,6 @@ public class AmazeAnimationFragment extends android.app.Fragment {
         View root = inflater.inflate(R.layout.fragment_amaze, container, false);
 
         carImage = (ImageView) root.findViewById(R.id.amaze_image);
-        resetButton = root.findViewById(R.id.amaze_reset_button);
 
         return root;
     }
@@ -42,15 +38,6 @@ public class AmazeAnimationFragment extends android.app.Fragment {
                                         carImage.setVisibility(View.VISIBLE);
                                     }
                                 });
-                    }
-                });
-        resetButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Quicksand.resetTrap("NewKey");
-                        Quicksand.resetTrap(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION);
-                        Quicksand.resetTrap(ViewAnimateActivity.KEY_ANIM_SHOW_HIDE);
                     }
                 });
     }

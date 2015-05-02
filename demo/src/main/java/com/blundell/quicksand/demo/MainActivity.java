@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.blundell.quicksand.Quicksand;
 import com.blundell.quicksand.demo.activitytransition.FromHereActivity;
 import com.blundell.quicksand.demo.simpleanimation.SimpleAnimationActivity;
 import com.blundell.quicksand.demo.viewanimation.ViewAnimateActivity;
@@ -48,6 +49,17 @@ public class MainActivity extends Activity {
                             Intent intent = new Intent(MainActivity.this, FromHereActivity.class);
                             startActivity(intent);
                         }
+                    }
+                });
+
+        findViewById(R.id.button_main_reset_all).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Quicksand.resetTrap("NewKey");
+                        Quicksand.resetTrap(FromHereActivity.KEY_MY_ACTIVITY_TRANSITION);
+                        Quicksand.resetTrap(ViewAnimateActivity.KEY_ANIM_SHOW_HIDE);
+                        Toast.makeText(MainActivity.this, R.string.message_reset_traps, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

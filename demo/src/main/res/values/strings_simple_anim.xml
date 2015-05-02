@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="simple_anim_explanation_text">Each time you view this Activity it will animate the text at a differing speed until eventually it doesn\'t move.</string>
+  <string name="simple_anim_text">welcome</string>
+</resources>

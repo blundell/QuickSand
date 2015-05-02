@@ -8,7 +8,7 @@
     android:id="@+id/button_animate"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/button_animate_me_show" />
+    android:text="@string/view_property_show_button" />
 
   <ImageView
     android:id="@+id/image_animate"
@@ -22,6 +22,6 @@
     android:id="@+id/button_reset_animation_count"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/button_reset_animation_count" />
+    android:text="@string/view_property_reset_count_button" />
 
 </LinearLayout>

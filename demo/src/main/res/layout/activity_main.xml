@@ -18,19 +18,24 @@
     android:id="@+id/button_main_transition_demo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/main_activity_activity_transition_button" />
+    android:text="@string/main_activity_transition_button" />
 
   <Button
     android:id="@+id/button_main_simple_demo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/main_activity_simple_button" />
+    android:text="@string/main_simple_button" />
 
   <Button
     android:id="@+id/button_main_view_property_demo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/main_activity_multiview_button" />
+    android:text="@string/main_multiview_button" />
 
+  <Button
+    android:id="@+id/button_main_reset_all"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/main_reset_all_button" />
 
 </LinearLayout>

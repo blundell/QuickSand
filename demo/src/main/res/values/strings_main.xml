@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="main_activity_transition_button">Activity Transition</string>
+  <string name="main_simple_button">Simple Animation</string>
+  <string name="main_multiview_button">MultiView Animation</string>
+  <string name="main_reset_all_button">Reset all animation view counts</string>
+</resources>

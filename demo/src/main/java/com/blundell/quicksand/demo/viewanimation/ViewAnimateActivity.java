@@ -22,7 +22,7 @@ public class ViewAnimateActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_button_anim);
+        setContentView(R.layout.activity_view_property);
 
         animateButton = (Button) findViewById(R.id.button_animate);
         sandImage = (ImageView) findViewById(R.id.image_animate);
@@ -33,7 +33,7 @@ public class ViewAnimateActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         Quicksand.resetTrap(KEY_ANIM_SHOW_HIDE);
-                        Toast.makeText(ViewAnimateActivity.this, R.string.notify_reset, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewAnimateActivity.this, R.string.message_reset_trap, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });
@@ -53,7 +53,7 @@ public class ViewAnimateActivity extends Activity {
                                 new AnimatorListenerAdapter() {
                                     @Override
                                     public void onAnimationEnd(Animator animation) {
-                                        animateButton.setText(R.string.button_animate_me_hide);
+                                        animateButton.setText(R.string.view_property_hide_button);
                                         animateButton
                                                 .animate()
                                                 .alpha(1F)
@@ -84,7 +84,7 @@ public class ViewAnimateActivity extends Activity {
                                 new AnimatorListenerAdapter() {
                                     @Override
                                     public void onAnimationEnd(Animator animation) {
-                                        animateButton.setText(R.string.button_animate_me_show);
+                                        animateButton.setText(R.string.view_property_show_button);
                                         animateButton
                                                 .animate()
                                                 .alpha(1F)
@@ -108,7 +108,7 @@ public class ViewAnimateActivity extends Activity {
         }
 
         private boolean clickedShow() {
-            return animateButton.getText().toString().equals(getString(R.string.button_animate_me_show));
+            return animateButton.getText().toString().equals(getString(R.string.view_property_show_button));
         }
     };
 }

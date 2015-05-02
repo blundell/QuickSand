@@ -18,7 +18,7 @@
     android:id="@+id/from_here_image"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:contentDescription="@string/content_demo"
+    android:contentDescription="@string/content_desc_demo"
     android:src="@drawable/car_quicksand" />
 
   <TextView
@@ -35,6 +35,6 @@
     android:id="@+id/button_reset_transition_count"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/button_reset_transition_count" />
+    android:text="@string/transition_reset_count_button" />
 
 </LinearLayout>
