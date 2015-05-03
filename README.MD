@@ -1,20 +1,25 @@
 QuickSand
 =========
 
-Ever wanted to show a really cool explanatory animation to your users when they click or do something for the first time?
-But you know that after a while it'll get tedious and would stop users wanting to use your app.
+When you want to show a really enchanting explanatory animation to your users when they click or do something for the first time, but you know that after a while it'll get tedious and would stop users wanting to use your app.
 QuickSand is here to solve that problem.
 
-You can manipulate the duration of your animation depending on how many times the user has viewed it.
+Automatically manipulates the duration of animations depending on how many times the user has viewed them.
 
 Simple Use
 ----------
+
+This is the setup needed to define how you change the animation duration between views:
 
 ```java
 Map<String, Viscosity> modifiers = new HashMap<>();
 modifiers.put("MyAnimationSetKey", TwoStepViscosity.defaultInstance());
 Quicksand.create(this, modifiers);
+```
 
+This is you "trapping" your animation, meaning when this view is animated Quicksand will determine how many times it as been viewed and vary the animation duration accordingly: 
+
+```java 
 View myView = findViewById(R.id.my_view);
 QuickSand.trap("MyAnimationSetKey", myView);
 myView.animate().alpha();
@@ -43,7 +48,11 @@ See the [demo project](https://github.com/blundell/QuickSand/tree/master/demo) f
 Adding to your project
 --------
 
-// TODO
+```groovy
+dependencies {
+    compile 'com.blundell:quicksand:1.0.0'
+}
+```
 
 
 --------
@@ -59,7 +68,7 @@ See it to believe it
 Download
 --------
 
-// TODO
+Get the [1.0.0 MVP here](https://github.com/blundell/QuickSand/raw/master/releases/quicksand-1.0.0.aar)
 
 License
 -------
