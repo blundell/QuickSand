@@ -50,7 +50,7 @@ Adding to your project
 
 ```groovy
 dependencies {
-    compile 'com.blundell:quicksand:1.0.0'
+    compile 'com.blundell:quicksand:1.0.1'
 }
 ```
 
@@ -68,7 +68,7 @@ See it to believe it
 Download
 --------
 
-Get the [1.0.0 MVP here](https://github.com/blundell/QuickSand/raw/master/releases/quicksand-1.0.0.aar)
+Get [1.0.1 here](https://github.com/blundell/QuickSand/raw/master/releases/quicksand-1.0.1.aar)
 
 License
 -------
