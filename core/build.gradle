@@ -8,8 +8,6 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
     }
 
     compileOptions {
@@ -22,8 +20,8 @@ publish {
     userOrg = 'blundell'
     groupId = 'com.blundell'
     artifactId = 'quicksand'
-    version = '1.0.0'
-    description = 'Monitor and change animation durations based on view count.'
+    version = '1.0.1'
+    description = 'Monitor and automatically adjust animation durations based on view count.'
     website = 'https://github.com/blundell/QuickSand'
 }
 
