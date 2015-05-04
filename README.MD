@@ -61,7 +61,7 @@ See it to believe it
 
 |15 second gif below|  
 |---|
-Notice how the animation slows down each time it is ran until eventually it does not animate (only touch feedback), `Quicksand` integration is done with 2 lines of code.|
+Notice how the animation duration decreases each time it is ran until eventually it does not animate (only touch feedback), `Quicksand` integration is done with 2 lines of code.|
 |![demo](demo/demo_z1c.gif)|
 
 Download
