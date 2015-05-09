@@ -3,16 +3,16 @@ package com.blundell.quicksand.viscosity;
 /**
  * Speeds up over time until 0 duration
  */
-public class LinearChangeViscosity implements Viscosity {
+public class LinearChangeViscosityInterpolator implements ViscosityInterpolator {
     private static final int DEFAULT_MAX_VIEWS = 10;
 
     private final int maxViews;
 
-    public static Viscosity defaultInstance() {
-        return new LinearChangeViscosity(DEFAULT_MAX_VIEWS);
+    public static ViscosityInterpolator defaultInstance() {
+        return new LinearChangeViscosityInterpolator(DEFAULT_MAX_VIEWS);
     }
 
-    public LinearChangeViscosity(int maxViews) {
+    public LinearChangeViscosityInterpolator(int maxViews) {
         this.maxViews = maxViews;
     }
 

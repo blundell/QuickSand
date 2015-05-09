@@ -1,6 +1,6 @@
 package com.blundell.quicksand;
 
-import com.blundell.quicksand.viscosity.Viscosity;
+import com.blundell.quicksand.viscosity.ViscosityInterpolator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 public class DurationCalculatorTest {
 
     @Mock
-    Viscosity mockViscosity;
+    ViscosityInterpolator mockViscosity;
 
     private DurationCalculator calc;
 

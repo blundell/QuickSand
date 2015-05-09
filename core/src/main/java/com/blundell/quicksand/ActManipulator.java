@@ -1,17 +1,17 @@
 package com.blundell.quicksand;
 
 import com.blundell.quicksand.act.Act;
-import com.blundell.quicksand.viscosity.Viscosity;
+import com.blundell.quicksand.viscosity.ViscosityInterpolator;
 
 class ActManipulator {
 
     private final AnimationTracker animationTracker;
     private final DurationCalculator durationCalculator;
-    private final ViscosityCollection viscosityCollection;
+    private final ViscosityInterpolatorMap viscosityCollection;
 
     private boolean preRunDurationSet = true;
 
-    ActManipulator(AnimationTracker animationTracker, DurationCalculator durationCalculator, ViscosityCollection viscosityCollection) {
+    ActManipulator(AnimationTracker animationTracker, DurationCalculator durationCalculator, ViscosityInterpolatorMap viscosityCollection) {
         this.animationTracker = animationTracker;
         this.durationCalculator = durationCalculator;
         this.viscosityCollection = viscosityCollection;
@@ -43,7 +43,7 @@ class ActManipulator {
     }
 
     private long getViscosityAffectedDuration(String key, Act act) {
-        Viscosity viscosity = viscosityCollection.getFor(key);
+        ViscosityInterpolator viscosity = viscosityCollection.getFor(key);
         long viewCount = animationTracker.getCount(key);
         long currentDuration = getCurrentDuration(key, act);
         return durationCalculator.calculateNewDuration(viscosity, viewCount, currentDuration);

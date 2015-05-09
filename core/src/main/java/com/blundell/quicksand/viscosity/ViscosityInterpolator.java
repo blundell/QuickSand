@@ -1,9 +1,9 @@
 package com.blundell.quicksand.viscosity;
 
 /**
- * Viscosity is how you determine the speed of your animations change over time
+ * ViscosityInterpolator is how you determine the speed of your animations change over time
  */
-public interface Viscosity {
+public interface ViscosityInterpolator {
 
     /**
      * @param currentDuration how long the animation is at the moment

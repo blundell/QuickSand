@@ -12,7 +12,7 @@ public class NoChangeViscosityTest {
 
     @Test
     public void testNoMatterTheViewCountDurationIsNeverChanged() throws Exception {
-        Viscosity viscosity = new NoChangeViscosity();
+        ViscosityInterpolator viscosity = new NoChangeViscosityInterpolator();
 
         for (int i = 0; i < 5000; i++) {
             long duration = viscosity.calculateDuration(ANY_LONG, i);

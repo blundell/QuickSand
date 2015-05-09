@@ -3,7 +3,7 @@ package com.blundell.quicksand.viscosity;
 /**
  * Will never change the duration always returning the current duration
  */
-public class NoChangeViscosity implements Viscosity {
+public class NoChangeViscosityInterpolator implements ViscosityInterpolator {
     @Override
     public long calculateDuration(long currentDuration, long viewCount) {
         return currentDuration;

@@ -18,5 +18,5 @@ simpleanimation
 
     Shows Quicksand integration when using ViewPropertyAnimator
 
-Each animation you create is controlled by a Viscosity, this class determines how the animation duration changes over time.
-If you look in DemoApplication.java you can toggle different Viscosities for the demo animations.
+Each animation you create is controlled by a ViscosityInterpolator, this class determines how the animation duration changes over time.
+If you look in DemoApplication.java you can toggle different Interpolators for the demo animations.

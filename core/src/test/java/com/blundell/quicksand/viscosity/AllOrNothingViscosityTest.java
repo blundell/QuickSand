@@ -13,7 +13,7 @@ public class AllOrNothingViscosityTest {
     @Test
     public void testWhenMaxViewsReachedDurationIsZero() throws Exception {
         int maxViews = 2;
-        Viscosity viscosity = new AllOrNothingViscosity(maxViews);
+        ViscosityInterpolator viscosity = new AllOrNothingViscosityInterpolator(maxViews);
 
         long duration = viscosity.calculateDuration(ANY_LONG, ++maxViews);
 
@@ -23,7 +23,7 @@ public class AllOrNothingViscosityTest {
     @Test
     public void testWhenViewCountIsOverMaxViewsDurationIsZero() throws Exception {
         int maxViews = 2;
-        Viscosity viscosity = new AllOrNothingViscosity(maxViews);
+        ViscosityInterpolator viscosity = new AllOrNothingViscosityInterpolator(maxViews);
 
         long duration = viscosity.calculateDuration(ANY_LONG, ++maxViews);
 
@@ -32,7 +32,7 @@ public class AllOrNothingViscosityTest {
 
     @Test
     public void testWhenViewCountIsLessThanMaxDurationEqualsCurrentDuration() throws Exception {
-        Viscosity viscosity = new AllOrNothingViscosity(2);
+        ViscosityInterpolator viscosity = new AllOrNothingViscosityInterpolator(2);
         int viewCount = 1;
         long currentDuration = ANY_LONG;
 

@@ -3,17 +3,17 @@ package com.blundell.quicksand.viscosity;
 /**
  * Will return one duration then after a threshold of X return half of the duration
  */
-public class TwoStepViscosity implements Viscosity {
+public class TwoStepViscosityInterpolator implements ViscosityInterpolator {
 
     private static final int DEFAULT_MAX_VIEWS = 10;
 
     private final int stepThreshold;
 
-    public static Viscosity defaultInstance() {
-        return new TwoStepViscosity(DEFAULT_MAX_VIEWS);
+    public static ViscosityInterpolator defaultInstance() {
+        return new TwoStepViscosityInterpolator(DEFAULT_MAX_VIEWS);
     }
 
-    public TwoStepViscosity(int stepThreshold) {
+    public TwoStepViscosityInterpolator(int stepThreshold) {
         this.stepThreshold = stepThreshold;
     }
 

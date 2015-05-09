@@ -3,17 +3,17 @@ package com.blundell.quicksand.viscosity;
 /**
  * Will return the current transition duration without change up to a maximum of X views and then return 0
  */
-public class AllOrNothingViscosity implements Viscosity {
+public class AllOrNothingViscosityInterpolator implements ViscosityInterpolator {
 
     private static final int DEFAULT_MAX_VIEWS = 10;
 
     private final int maxViews;
 
-    public static Viscosity defaultInstance() {
-        return new AllOrNothingViscosity(DEFAULT_MAX_VIEWS);
+    public static ViscosityInterpolator defaultInstance() {
+        return new AllOrNothingViscosityInterpolator(DEFAULT_MAX_VIEWS);
     }
 
-    public AllOrNothingViscosity(int maxViews) {
+    public AllOrNothingViscosityInterpolator(int maxViews) {
         this.maxViews = maxViews;
     }
 

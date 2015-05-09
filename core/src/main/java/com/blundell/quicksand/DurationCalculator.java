@@ -1,11 +1,11 @@
 package com.blundell.quicksand;
 
-import com.blundell.quicksand.viscosity.Viscosity;
+import com.blundell.quicksand.viscosity.ViscosityInterpolator;
 import com.novoda.notils.logger.simple.Log;
 
 class DurationCalculator {
 
-    public long calculateNewDuration(Viscosity viscosity, long timesAnimationViewed, long currentDuration) {
+    public long calculateNewDuration(ViscosityInterpolator viscosity, long timesAnimationViewed, long currentDuration) {
         if (currentDuration == 0) {
             Log.e("duration was zero");
             return 0;

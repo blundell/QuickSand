@@ -7,7 +7,7 @@ import android.view.ViewPropertyAnimator;
 
 import com.blundell.quicksand.act.Act;
 import com.blundell.quicksand.act.ActFactory;
-import com.blundell.quicksand.viscosity.Viscosity;
+import com.blundell.quicksand.viscosity.ViscosityInterpolator;
 import com.novoda.notils.exception.DeveloperError;
 
 import java.util.List;
@@ -33,18 +33,18 @@ public class Quicksand {
      * @param context     any context, we will take the application context from this to avoid activity leaks
      * @param viscosities a map which contains key values to allow you to change transition duration over time.
      */
-    public static void create(Context context, Map<String, Viscosity> viscosities) {
+    public static void create(Context context, Map<String, ViscosityInterpolator> viscosities) {
         Context applicationContext = context.getApplicationContext();
         AnimationCounter counter = AnimationCounter.newInstance(applicationContext);
         AnimationTracker tracker = new AnimationTracker(counter, new CountDownTimerFactory());
         DurationCalculator durationCalculator = new DurationCalculator();
-        ViscosityCollection viscosityCollection = ViscosityCollection.newInstance(viscosities);
+        ViscosityInterpolatorMap viscosityCollection = ViscosityInterpolatorMap.newInstance(viscosities);
         actManipulator = new ActManipulator(tracker, durationCalculator, viscosityCollection);
         actFactory = new ActFactory();
     }
 
     /**
-     * Quicksand will manipulate your transition duration based on the {@link com.blundell.quicksand.viscosity.Viscosity} for the key.
+     * Quicksand will manipulate your transition duration based on the {@link ViscosityInterpolator} for the key.
      * Animations can be grouped by the same {@param key} so that the duration is not incremented multiple times for one group.
      * If you do not group by key, each transition will be treated separate and so will have an independent transition duration.
      *

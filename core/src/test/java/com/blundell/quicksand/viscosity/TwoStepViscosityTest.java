@@ -13,7 +13,7 @@ public class TwoStepViscosityTest {
     @Test
     public void testWhenViewCountIsUnderStepThresholdDurationIsNotChanged() throws Exception {
         int stepThreshold = 2;
-        Viscosity viscosity = new TwoStepViscosity(stepThreshold);
+        ViscosityInterpolator viscosity = new TwoStepViscosityInterpolator(stepThreshold);
 
         long duration = viscosity.calculateDuration(ANY_LONG, --stepThreshold);
 
@@ -23,7 +23,7 @@ public class TwoStepViscosityTest {
     @Test
     public void testWhenStepThresholdReachedDurationIsHalved() throws Exception {
         int stepThreshold = 2;
-        Viscosity viscosity = new TwoStepViscosity(stepThreshold);
+        ViscosityInterpolator viscosity = new TwoStepViscosityInterpolator(stepThreshold);
 
         long duration = viscosity.calculateDuration(ANY_LONG, stepThreshold);
 
@@ -33,7 +33,7 @@ public class TwoStepViscosityTest {
     @Test
     public void testWhenViewCountIsOverStepThresholdDurationIsHalved() throws Exception {
         int stepThreshold = 2;
-        Viscosity viscosity = new TwoStepViscosity(stepThreshold);
+        ViscosityInterpolator viscosity = new TwoStepViscosityInterpolator(stepThreshold);
 
         long duration = viscosity.calculateDuration(ANY_LONG, ++stepThreshold);
 
