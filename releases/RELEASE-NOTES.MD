@@ -1,3 +1,8 @@
+1.0.2
+-----
+
+Renames Velocity > VelocityInterpolator
+
 1.0.1
 -----
 

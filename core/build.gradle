@@ -20,7 +20,7 @@ publish {
     userOrg = 'blundell'
     groupId = 'com.blundell'
     artifactId = 'quicksand'
-    version = '1.0.1'
+    version = '1.0.2'
     description = 'Monitor and automatically adjust animation durations based on view count.'
     website = 'https://github.com/blundell/QuickSand'
 }

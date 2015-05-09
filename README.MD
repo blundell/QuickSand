@@ -49,7 +49,7 @@ Adding to your project
 
 ```groovy
 dependencies {
-    compile 'com.blundell:quicksand:1.0.1'
+    compile 'com.blundell:quicksand:1.0.2'
 }
 ```
 
