@@ -68,7 +68,7 @@ Download
 --------
 
 [Release Notes](https://github.com/blundell/QuickSand/blob/master/releases/RELEASE-NOTES.MD)
-Get [1.0.1 here](https://github.com/blundell/QuickSand/raw/master/releases/quicksand-1.0.1.aar)
+Get [the latest version here](https://github.com/blundell/QuickSand/raw/master/releases/)
 
 License
 -------
