@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "com.blundell.quicksand.demo"
@@ -23,5 +23,5 @@ android {
 }
 dependencies {
     compile project(':core')
-    compile 'com.android.support:support-v4:21.+'
+    compile 'com.android.support:support-v4:22.+'
 }
