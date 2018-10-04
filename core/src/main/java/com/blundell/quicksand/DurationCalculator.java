@@ -6,11 +6,11 @@ import com.novoda.notils.logger.simple.Log;
 class DurationCalculator {
 
     public long calculateNewDuration(ViscosityInterpolator viscosity, long timesAnimationViewed, long currentDuration) {
-        if (currentDuration == 0) {
+        if (currentDuration.equals(0)) {
             Log.e("duration was zero");
             return 0;
         }
-        if (timesAnimationViewed == 0) {
+        if (timesAnimationViewed.equals(0)) {
             Log.v("first time viewing so no duration change");
             return currentDuration;
         }
